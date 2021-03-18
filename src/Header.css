@@ -1,0 +1,23 @@
+.header {
+    background-color: #FCDFEB;
+    height: 100px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #491D0D;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #FE9A76;
+    text-align: center;
+}
+
+/*
+valkoinen: #FFFFFF off-white: #FCDFEB
+korostuspinkki: #EE1AAB
+perusvaaleanpunainen: #F38088
+secondarydonitsiväri: #FE9A76
+tumma: #491D0D
+*/
