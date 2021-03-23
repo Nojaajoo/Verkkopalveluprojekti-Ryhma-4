@@ -1,17 +1,21 @@
-.header {
+/* .header {
     background-color: #FCDFEB;
-    /* height: 70px; */
     text-align: center;
     margin-bottom: 1em;
+} */
+
+.navbar {
+    background-color: #FCDFEB;
+}
+
+.navbar a {
+    color: #491D0D;
 }
 
 .footer {
     background-color: #491D0D;
-    position: static;
-    bottom: 0;
-    /* left: 0; */
     width: 100%;
-    height: 40px;
+    height: 70px;
     color: #FE9A76;
     text-align: center;
     margin-top: 2em;

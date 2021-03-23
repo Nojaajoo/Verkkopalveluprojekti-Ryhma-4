@@ -5,27 +5,47 @@ body {
 
 .App {
   text-align: center;
+  width: 80%;
+  margin: auto;
 }
 
 h1 {
   color: #EE1AAB;
 }
 
-/* .banner {
-  background-color: #FE9A76;
-} */
+.carousel-caption {
+  background-color: rgba(73,29,13,0.3);
+  /* color: #FE9A76; */
+  left: 0;
+  width: 100%;
+}
 
-.donut {
-  max-width: 35%;
-  height: 300px;
+.addDonutToCart {
+  border-radius: 50%;
   background-color: #F38088;
-  margin: auto;
-  border: 5px solid white;
+  color: white;
+  padding: 0.7em;
 }
 
-.donut:hover {
+.addDonutToCart:hover {
   background-color: #EE1AAB;
+  transition: ease 0.5s;
 }
+
+.cartLink {
+  text-decoration: none;
+}
+
+.card {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.card:hover {
+  background-color: #FCDFEB;
+  transition: ease 0.5s;
+}
+
 
 /*
 valkoinen: #FFFFFF off-white: #FCDFEB
