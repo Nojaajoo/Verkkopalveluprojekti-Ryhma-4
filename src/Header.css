@@ -12,6 +12,13 @@
     color: #491D0D;
 }
 
+.navbarContent {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    max-width: 1440px;
+}
+
 .footer {
     background-color: #491D0D;
     width: 100%;

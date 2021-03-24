@@ -4,19 +4,38 @@ import logo from "./img/donitsilogo.png"
 
 export default function Header() {
     return (
-        <div className="header container-fluid">
-            <div className="row">
-                <picture className="col-5 col-sm-4 col-md-3 col-lg-1">
-                <img className="img-fluid p-1" src={logo} alt="logo"/>
-                </picture>
-                <div className="col-7 col-sm-8 col-md-9 col-lg-11">
-                <p>Header: VALIKKO - LOGO - SEARCH - yms. kirjautuminen, ostoskori... </p>
+        <>
+        <nav className="navbar navbar-expand-lg">
+            <div className="container-fluid navbarContent">
+                <a className="navbar-brand" href="#"><img src={logo} alt="logo" width="120" className="d-inline-block" /></a>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link" href="#">Features</a>
+                    </li>
+                    <li className="nav-item">
+                    <a className="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a className="dropdown-item" href="#">Action</a></li>
+                        <li><a className="dropdown-item" href="#">Another action</a></li>
+                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                </div>
             </div>
-            </div>
-            
-            
-            
-            
-        </div>
+        </nav>
+        </>    
     )
 }
