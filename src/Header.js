@@ -2,13 +2,13 @@ import React from 'react';
 import './Header.css';
 import logo from "./img/donitsilogo.png";
 import {useState,useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, BrowserRouter as Router} from 'react-router-dom';
 
 
 
-export default function Header({url}) {
+export default function Header({}) {
     const [categories, setCategories] = useState([])
-
+    const url = "http://localhost/verkkopalveluprojekti/";
     useEffect(async() => {
         try {
             const response = await fetch(url + 'products/getcategories.php');
@@ -50,6 +50,7 @@ export default function Header({url}) {
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     {categories.map(tuoteryhma => (
                             <li key={tuoteryhma.trnro}>
+                                <Router>
                                 <Link
                                     className="dropdown-item"
                                     to={{
@@ -61,6 +62,7 @@ export default function Header({url}) {
                                     }}
                                     >{tuoteryhma.trnimi}
                                 </Link>
+                                </Router>
                             </li>
                             ))} 
                     </ul>
