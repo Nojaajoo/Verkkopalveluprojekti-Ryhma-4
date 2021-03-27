@@ -1,8 +1,29 @@
-import React from 'react'
+import React from 'react';
 import './Header.css';
-import logo from "./img/donitsilogo.png"
+import logo from "./img/donitsilogo.png";
+import {useState,useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
-export default function Header() {
+
+
+export default function Header({url}) {
+    const [categories, setCategories] = useState([])
+
+    useEffect(async() => {
+        try {
+            const response = await fetch(url + 'products/getcategories.php');
+            const json = await response.json();
+            if (response.ok) {
+                setCategories(json);
+            } else {
+                alert(json.error);
+            }
+        } catch (error) {
+            alert(error);
+        }
+    }, [])
+
+    
     return (
         <>
         <nav className="navbar navbar-expand-lg">
@@ -27,9 +48,21 @@ export default function Header() {
                         Dropdown link
                     </a>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a className="dropdown-item" href="#">Action</a></li>
-                        <li><a className="dropdown-item" href="#">Another action</a></li>
-                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                    {categories.map(tuoteryhma => (
+                            <li key={tuoteryhma.trnro}>
+                                <Link
+                                    className="dropdown-item"
+                                    to={{
+                                        pathname: '/',
+                                        state: {
+                                            trnro: tuoteryhma.trnro,
+                                            trnimi: tuoteryhma.trnimi
+                                        }
+                                    }}
+                                    >{tuoteryhma.trnimi}
+                                </Link>
+                            </li>
+                            ))} 
                     </ul>
                     </li>
                 </ul>

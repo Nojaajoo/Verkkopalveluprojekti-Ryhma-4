@@ -1,18 +1,49 @@
 
 import './App.css';
+import banner from "./img/donitsibanneri.jpg"
 import logo from "./img/donitsilogo.png"
-import Carousel from "./Carousel";
-
 
 function App() {
   return (
-    <>
       <div className="App">
-        <Carousel />
+
+        <div id="donitsikaruselli" className="carousel slide" data-bs-ride="carousel">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <img src={banner} className="d-block w-100" alt="..."></img>
+              <div className="carousel-caption d-none d-md-block">
+                <h5>Donitsimainos 1</h5>
+                <p>Nam, täällä on tämmösiäkin donitseja!</p>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <img src={banner} className="d-block w-100" alt="..."></img>
+              <div className="carousel-caption d-none d-md-block">
+                <h5>Donitsimainos 2</h5>
+                <p>Nam nam, täällä on tämmösiäkin donitseja!</p>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <img src={banner} className="d-block w-100" alt="..."></img>
+              <div className="carousel-caption d-none d-md-block">
+                <h5>Donitsimainos 3</h5>
+                <p>Nam nam nam, täällä on tämmösiäkin donitseja!</p>
+              </div>
+            </div>
+          </div>
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
 
         <div className="row">
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -24,7 +55,7 @@ function App() {
           </div>
 
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -35,7 +66,7 @@ function App() {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -46,7 +77,7 @@ function App() {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -57,7 +88,7 @@ function App() {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -68,7 +99,7 @@ function App() {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -79,7 +110,7 @@ function App() {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -90,7 +121,7 @@ function App() {
             </div>
           </div>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3" >
-            <div className="card text-center">
+            <div className="card text-start">
               <img src={logo} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">Tuotteen nimi</h5>
@@ -104,7 +135,6 @@ function App() {
         </div>
 
       </div>
-    </>
   );
 }
 
