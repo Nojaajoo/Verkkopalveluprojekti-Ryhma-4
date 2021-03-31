@@ -7,7 +7,7 @@ import {Link, BrowserRouter as Router} from 'react-router-dom';
 
 export default function Header({url,setCategory}) {
     const [categories, setCategories] = useState([])
-    const url = "http://localhost/donitsikauppa/";
+  //  const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
         try {
             
@@ -51,23 +51,25 @@ export default function Header({url,setCategory}) {
                         Dropdown link
                     </a>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    {categories.map(tuoteryhma => (
+                    {categories.map(tuoteryhma => {
+                        return (
                             <li key={tuoteryhma.trnro}>
-                                <Router>
-                                <Link
-                                    className="dropdown-item"
-                                    to={{
-                                        pathname: '/',
-                                        state: {
-                                            trnro: tuoteryhma.trnro,
-                                            trnimi: tuoteryhma.trnimi
-                                        }
-                                    }}
+                                {/* <Router> */}
+                                    <Link
+                                        className="dropdown-item"
+                                        to={{
+                                            pathname: '/',
+                                            state: {
+                                                trnro: tuoteryhma.trnro,
+                                                trnimi: tuoteryhma.trnimi
+                                            }
+                                        }}
                                     >{tuoteryhma.trnimi}
-                                </Link>
-                                </Router>
+                                    </Link>
+                                {/* </Router> */}
                             </li>
-                            ))} 
+                        );
+                    })} 
                     </ul>
                     </li>
                 </ul>
