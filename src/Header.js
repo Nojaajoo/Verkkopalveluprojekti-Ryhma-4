@@ -5,14 +5,17 @@ import {useState,useEffect} from 'react';
 import {Link, BrowserRouter as Router} from 'react-router-dom';
 
 
-export default function Header({setCategory}) {
+export default function Header({url,setCategory}) {
     const [categories, setCategories] = useState([])
     const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
         try {
+            
             const response = await fetch(url + 'products/getcategories.php');
             const json = await response.json();
+            
             if (response.ok) {
+                
                 setCategories(json);
                 setCategory(json[0]);
             } else {
