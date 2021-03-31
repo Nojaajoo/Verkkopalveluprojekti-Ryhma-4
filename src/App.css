@@ -3,7 +3,8 @@ body {
   background-color: #FFFFFF;
 }
 
-.App {
+.App,
+#donitsikaruselli {
   text-align: center;
   width: 80%;
   margin: auto;

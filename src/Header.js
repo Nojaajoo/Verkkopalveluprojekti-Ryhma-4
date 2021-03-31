@@ -8,7 +8,7 @@ import {Link, BrowserRouter as Router} from 'react-router-dom';
 
 export default function Header({}) {
     const [categories, setCategories] = useState([])
-    const url = "http://localhost/verkkopalveluprojekti/";
+    const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
         try {
             const response = await fetch(url + 'products/getcategories.php');
