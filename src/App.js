@@ -9,6 +9,7 @@ import Header from './Header';
 import Home from './Home';
 import NotFound from './NotFound';
 import Carousel from './Carousel';
+import Cart from './Cart';
 
 const URL = "http://localhost/donitsikauppa/";
 
@@ -34,6 +35,7 @@ function App() {
           category={category}/>}
           exact
           />
+          <Route path="/Cart" render={() => <Cart />} />
           <Route component={NotFound} />
         </Switch>
       </div>
