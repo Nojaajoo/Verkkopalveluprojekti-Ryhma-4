@@ -3,7 +3,7 @@ import './App.css';
 import banner from "./img/donitsibanneri.jpg"
 import logo from "./img/donitsilogo.png"
 import {useState,useEffect} from 'react';
-import {Switch,Route,useLocation} from 'react-router';
+import {Switch,Route,useLocation} from 'react-router-dom';
 import Footer from './Footer';
 import Header from './Header';
 import Home from './Home';
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     if (location.state!==undefined) {
-      setCategory({id: location.state.id,name: location.state.name});
+      setCategory({trnro: location.state.trnro,trnimi: location.state.trnimi});
     }
   }, [location.state])
 
