@@ -5,8 +5,7 @@ import {useState,useEffect} from 'react';
 import {Link, BrowserRouter as Router} from 'react-router-dom';
 
 
-
-export default function Header({}) {
+export default function Header({setCategory}) {
     const [categories, setCategories] = useState([])
     const url = "http://localhost/verkkopalveluprojekti/";
     useEffect(async() => {
@@ -15,6 +14,7 @@ export default function Header({}) {
             const json = await response.json();
             if (response.ok) {
                 setCategories(json);
+                setCategory(json[0]);
             } else {
                 alert(json.error);
             }
