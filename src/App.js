@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Header from './Header';
 import Home from './Home';
 import NotFound from './NotFound';
+import Carousel from './Carousel';
 
 const URL = "http://localhost/donitsikauppa/";
 
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       <Header url={URL} setCategory={setCategory}/>
+      <Carousel />
       <div id="content" className="container-fluid">
         <Switch>
           <Route path="/" render={() => <Home

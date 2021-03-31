@@ -6,7 +6,7 @@ export default function Home({url,category}) {
     useEffect(async() => {
       try {
         alert(category?.id)
-        const response = await fetch(url + 'products/getproducts.php' + category?.id);
+        const response = await fetch(url + 'products/getproducts.php/' + category?.id);
         const json = await response.json();
         if (response.ok) {
           setProducts(json);
