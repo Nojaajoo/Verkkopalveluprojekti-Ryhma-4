@@ -4,8 +4,8 @@ export default function Home({url,category}) {
     const [products, setProducts] = useState([]);
   
     useEffect(async() => {
+      if (category !== null) {
       try {
-        alert(category?.trnro);
         const response = await fetch(url + 'products/getproducts.php/' + category?.trnro);
         const json = await response.json();
         if (response.ok) {
@@ -17,8 +17,10 @@ export default function Home({url,category}) {
       } catch (error) {
         alert(error);
       }
+    }
     }, [category])
   
+
     return (
       <div>
         <h3>Products for {category?.trnimi}</h3>
