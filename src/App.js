@@ -11,7 +11,8 @@ import NotFound from './NotFound';
 import Carousel from './Carousel';
 import Cart from './Cart';
 
-const URL = "http://localhost/donitsikauppa/";
+
+const URL = "http://localhost/verkkopalveluprojekti/";
 
 function App() {
   const [category, setCategory] = useState(null);
@@ -41,8 +42,9 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </div>
-      <Footer />
+      
     </div>
+    <Footer />
   </>
   );
 }
