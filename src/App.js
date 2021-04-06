@@ -12,6 +12,10 @@ import Carousel from './Carousel';
 import Cart from './Cart';
 import Order from './Order';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0c0e513cbe6eb3104cd0b6cf584d748a6bebe3ec
 const URL = "http://localhost/verkkopalveluprojekti/";
 
 function App() {
@@ -43,8 +47,9 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </div>
-      <Footer />
+      
     </div>
+    <Footer />
   </>
   );
 }

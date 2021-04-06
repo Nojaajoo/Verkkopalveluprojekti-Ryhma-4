@@ -4,7 +4,7 @@ import "./Cart.css";
 export default function Cart() {
     return (
         <div id="shoppingcart">
-            <div className="card">
+            <div className="card cartCard">
                 <div className="row">
                     <div className="col-md-8 cart">
                         <div className="title">
