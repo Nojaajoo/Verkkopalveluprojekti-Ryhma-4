@@ -36,9 +36,9 @@ export default function Home({url,category}) {
                     <img src={url + "img/" + product.kuva} className="card-img-top" alt="..."></img>
                     <div className="card-body">
                       <h5 className="card-title">{product.tuotenimi}</h5>
-                      <p className="card-text">Tuotteen kuvaus, mm maukas donitsi!</p>
-                      <p className="card-text"><small className="text-muted">Tarvittaessa lisää tekstiä</small></p>
-                      <a className="cartLink" href="#"><span className="addDonutToCart">Osta!</span></a>
+                      <p className="card-text">{product.maku}</p>
+                      <p className="card-text">{product.taytemaku}</p>
+                      <a className="cartLink, card-text" href="#">{product.hinta}<span className="addDonutToCart">Osta!</span></a>
                     </div>
                   </div>
               </div>
