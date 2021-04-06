@@ -33,11 +33,13 @@ h1 {
   background-color: #F38088;
   color: white;
   padding: 0.7em;
+
+  
 }
 
 .addDonutToCart:hover {
   background-color: #EE1AAB;
-  transition: ease 0.5s;
+  transition: ease-in-out 0.5s;
 }
 
 .cartLink {
@@ -46,14 +48,19 @@ h1 {
 }
 
 .card {
+  background-color: #FFFF;
   margin: 0 !important;
   width: 100% !important;
-  border: none;
+  margin-top: 10px !important;
+  transition: all 500ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+  
 }
 
 .card:hover {
   background-color: #FCDFEB;
-  transition: ease 0.5s;
+  transition: ease-in-out 0.5s;
+  border-radius: 0;
+  box-shadow: 0px 5px 12px #888888;
 }
 
 
