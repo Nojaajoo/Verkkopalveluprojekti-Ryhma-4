@@ -9,8 +9,7 @@ body {
 }
 
 .App,
-#donitsikaruselli,
-#shoppingcart {
+#donitsikaruselli {
   text-align: center;
   width: 80%;
   margin-left: auto;
