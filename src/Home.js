@@ -32,13 +32,13 @@ export default function Home({url,category}) {
               
               <div key={product.tuotenro} className="col-12 col-sm-6 col-md-4 col-lg-3">
                 {/* <p>{product.tuotenimi}</p> */}
-                  <div className="card text-start">
+                  <div className="card donitsicard text-start">
                     <img src={url + "img/" + product.kuva} className="card-img-top" alt="..."></img>
                     <div className="card-body">
                       <h5 className="card-title">{product.tuotenimi}</h5>
                       <p className="card-text">{product.maku}</p>
                       <p className="card-text">{product.taytemaku}</p>
-                      <a className="cartLink, card-text" href="#">{product.hinta}<span className="addDonutToCart">Osta!</span></a>
+                      <a className="cartLink" href="#">{product.hinta}<span className="addDonutToCart">Osta!</span></a>
                     </div>
                   </div>
               </div>
