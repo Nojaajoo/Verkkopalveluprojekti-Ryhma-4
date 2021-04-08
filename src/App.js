@@ -11,6 +11,8 @@ import NotFound from './NotFound';
 import Carousel from './Carousel';
 import Cart from './Cart';
 import Order from './Order';
+import Info from './Info';
+import Login from './Login';
 
 const URL = "http://localhost/verkkopalveluprojekti/";
 
@@ -40,6 +42,8 @@ function App() {
             />
             <Route path="/Cart" render={() => <Cart />} />
             <Route path="/Order" render={() => <Order />} />
+            <Route path="/Info" render={() => <Info />} />
+            <Route path="/Login" render={() => <Login />} />
             <Route component={NotFound} />
           </Switch>
         </div>

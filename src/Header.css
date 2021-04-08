@@ -32,6 +32,28 @@
     
 }
 
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(214, 26, 70, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.searchButton {
+    border: solid 1px #D61A46;
+    color: #D61A46;
+}
+
+.searchText {
+    border-color: #D61A46;
+}
+
+.dropTausta {
+    background-color: #fdcee280;
+}
+
+.dropText:hover {
+    background-color: #FCDFEB;
+}
+
+
 /*
 valkoinen: #FFFFFF off-white: #FCDFEB
 korostuspinkki: #EE1AAB
