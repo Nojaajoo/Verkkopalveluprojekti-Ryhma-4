@@ -4,7 +4,8 @@ import logo from "./img/donitsilogo.png";
 
 export default function Home({url,category}) {
     const [products, setProducts] = useState([]);
-  
+    let donitsiteksti = "Tässäpä olisi yllättävän maukas donitsi"
+
     useEffect(async() => {
       if (category !== null) {
       try {
@@ -25,7 +26,7 @@ export default function Home({url,category}) {
 
     return (
       <div className="App">
-        <h3>Products for {category?.trnimi}</h3>
+        <h3>{category?.trnimi}</h3>
         <div className="container-fluid">
           <div className="row">
             {products.map(product => (
@@ -36,9 +37,8 @@ export default function Home({url,category}) {
                     <img src={url + "img/" + product.kuva} className="card-img-top" alt="..."></img>
                     <div className="card-body">
                       <h5 className="card-title">{product.tuotenimi}</h5>
-                      <p className="card-text">{product.maku}</p>
-                      <p className="card-text">{product.taytemaku}</p>
-                      <a className="cartLink" href="#">{product.hinta}<span className="addDonutToCart">Osta!</span></a>
+                      <p className="card-text">{donitsiteksti}</p>
+                      <a className="cartLink" href="#">{product.hinta}€ <span className="addDonutToCart">Osta!</span></a>
                     </div>
                   </div>
               </div>
