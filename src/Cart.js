@@ -52,24 +52,24 @@ export default function Cart() {
                     </div>
                     <div className="col-md-4 summary">
                         <div>
-                            <h5><b>Yhteenveto</b></h5>
+                            <h5 className="h5Cart"><b>Yhteenveto</b></h5>
                         </div>
                         <hr></hr>
                         <div className="row cartRow">
                             <div className="col cartCol" style={{paddingLeft:"0"}}>TUOTTEITA: 3</div>
                             <div className="col cartCol text-right">&euro; 132.00</div>
                         </div>
-                        <form>
-                            <p>Kuljetus</p> <select>
+                        <form className="formCart">
+                            <p>Kuljetus</p> <select className="selectCart">
                                 <option className="text-muted">Kotiinkuljetus - &euro;5.00</option>
                                 <option className="text-muted">Nouto myymälästä - &euro;0.00</option>
                             </select>
-                            <p>Lahjakortti</p> <input id="code" placeholder="Kirjoita koodi tähän"></input>
+                            <p>Lahjakortti</p> <input className="inputCart" id="code" placeholder="Kirjoita koodi tähän"></input>
                         </form>
                         <div className="row cartRow" style={{borderTop: "1px solid rgba(0,0,0,.1)", padding: "2vh 0"}}>
                             <div className="col cartCol">HINTA YHTEENSÄ</div>
                             <div className="col cartCol text-right">&euro; 137.00</div>
-                        </div> <button className="btn">MAKSA TILAUS</button>
+                        </div> <button className="btn btnCart">MAKSA TILAUS</button>
                     </div>
                 </div>
             </div>

@@ -125,7 +125,7 @@
     transition: ease 0.5s;
 }
 
-h5 {
+.h5Cart {
     margin-top: 4vh
 }
 
@@ -133,11 +133,11 @@ hr {
     margin-top: 1.25rem
 }
 
-form {
+.formCart {
     padding: 2vh 0
 }
 
-select {
+.selectCart {
     border: 1px solid rgba(0, 0, 0, 0.137);
     border-radius: 10px;
     padding: 1.5vh 1vh;
@@ -147,7 +147,7 @@ select {
     background-color: rgb(247, 247, 247)
 }
 
-input {
+.inputCart {
     border: 1px solid rgba(0, 0, 0, 0.137);
     border-radius: 10px;
     padding: 1vh;
@@ -157,11 +157,11 @@ input {
     background-color: rgb(247, 247, 247)
 }
 
-input:focus::-webkit-input-placeholder {
+.inputCart:focus::-webkit-input-placeholder {
     color: transparent
 }
 
-.btn {
+.btnCart {
     background-color: #FE9A76;
     /* border-color: #000; */
     color: white;
@@ -172,7 +172,7 @@ input:focus::-webkit-input-placeholder {
     border-radius: 10px;
 }
 /* jos on ongelmia nii se on tuo user-select */
-.btn:focus {
+.btnCart:focus {
     box-shadow: none;
     outline: none;
     box-shadow: none;
@@ -183,7 +183,7 @@ input:focus::-webkit-input-placeholder {
     transition: none
 }
 
-.btn:hover {
+.btnCart:hover {
     color: white;
     background-color: #EE1AAB;
     transition: ease 0.5s;
