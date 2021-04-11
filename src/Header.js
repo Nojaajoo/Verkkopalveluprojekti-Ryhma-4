@@ -3,9 +3,10 @@ import './Header.css';
 import logo from "./img/donitsilogo.png";
 import {useState,useEffect} from 'react';
 import {Link, BrowserRouter as Router} from 'react-router-dom';
+import CartIcon from "./CartIcon";
 
 
-export default function Header({url,setCategory}) {
+export default function Header({url,cart,setCategory}) {
     const [categories, setCategories] = useState([])
   //  const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
@@ -36,7 +37,7 @@ export default function Header({url,setCategory}) {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav linkit">
                     <li className="nav-item navText">
                     <a className="nav-link" href="/">Etusivu</a>
                     </li>
@@ -76,7 +77,13 @@ export default function Header({url,setCategory}) {
                         <input className="form-control me-2 searchText" type="search" placeholder="Search" aria-label="Search"/>
                         <button className="btn searchButton" type="submit">Search</button>
                     </form>
+                    <ul className="navbar-nav ml-auto cartIcon">
+                    <li className="nav-item" >
+                    <CartIcon cart={cart} />
+                    </li>
                 </ul>
+                </ul>
+                
                 </div>
             </div>
         </nav>

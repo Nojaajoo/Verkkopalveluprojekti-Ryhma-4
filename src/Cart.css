@@ -111,13 +111,16 @@
 }
 
 .back-to-shop {
-    margin-top: 4.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2em;
 }
 
 .back-to-shop a {
     text-decoration: none;
     background-color: #FE9A76;
-    border-radius: 50%;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 1em;
 }
 
 .back-to-shop a:hover {

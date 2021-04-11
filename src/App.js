@@ -18,8 +18,23 @@ const URL = "http://localhost/verkkopalveluprojekti/";
 
 function App() {
   const [category, setCategory] = useState(null);
+  const [cart, setCart] = useState([]);
 
   let location = useLocation();
+
+  //callback function add product to cart
+  function addToCart(product) {
+    const newCart = [...cart,product];
+    setCart(newCart);
+    localStorage.setItem("cart",JSON.stringify(newCart));
+    console.log(localStorage)
+  }
+
+  useEffect(() => {
+    if ("cart" in localStorage) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
+    }
+  }, [])
 
   useEffect(() => {
     if (location.state!==undefined) {
@@ -29,7 +44,7 @@ function App() {
 
   return (
     <>
-    <Header url={URL} setCategory={setCategory}/>
+    <Header url={URL} cart={cart} setCategory={setCategory}/>
     <div className="App">
       
         <Carousel />
@@ -37,10 +52,11 @@ function App() {
           <Switch>
             <Route path="/" render={() => <Home
             url={URL}
-            category={category}/>}
+            category={category}
+            addToCart={addToCart}/>}
             exact
             />
-            <Route path="/Cart" render={() => <Cart />} />
+            <Route path="/Cart" render={() => <Cart cart={cart} setCart={setCart} url={URL} />} />
             <Route path="/Order" render={() => <Order />} />
             <Route path="/Info" render={() => <Info />} />
             <Route path="/Login" render={() => <Login />} />

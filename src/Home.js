@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import "./App.css";
 import logo from "./img/donitsilogo.png";
 
-export default function Home({url,category}) {
+export default function Home({url,category, addToCart}) {
     const [products, setProducts] = useState([]);
     let donitsiteksti = "Tässäpä olisi yllättävän maukas donitsi"
 
@@ -38,7 +38,7 @@ export default function Home({url,category}) {
                     <div className="card-body">
                       <h5 className="card-title">{product.tuotenimi}</h5>
                       <p className="card-text">{donitsiteksti}</p>
-                      <a className="cartLink" href="#">{product.hinta}€ <span className="addDonutToCart">Osta!</span></a>
+                      <a className="cartLink" href="#">{product.hinta}€ <span onClick={e => addToCart(product)} className="addDonutToCart">Osta!</span></a>
                     </div>
                   </div>
               </div>

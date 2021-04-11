@@ -14,8 +14,13 @@
 
 .navbarContent {
     text-align: center;
-    width: 80%;
+    width: 100%;
     margin: auto;
+    max-width: 1440px;
+}
+
+.linkit {
+    width: 100%;
     max-width: 1440px;
 }
 
@@ -36,6 +41,11 @@
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(214, 26, 70, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
+.searchForm {
+    width: 30%;
+    align-self: center;
+}
+
 .searchButton {
     border: solid 1px #D61A46;
     color: #D61A46;
@@ -43,6 +53,7 @@
 
 .searchText {
     border-color: #D61A46;
+    min-width: 100px;
 }
 
 .dropTausta {
@@ -53,6 +64,37 @@
     background-color: #FCDFEB;
 }
 
+#navbarNavDropdown {
+    justify-content: space-evenly;
+    width: 100%;
+    
+}
+.nav-item {
+    margin: auto;
+}
+
+.cartIcon {
+    
+    /* text-align: end; */
+    /* display: flex; */
+    justify-content: flex-end;
+    /* float: right; */
+    margin-left: 2em;
+    padding: 1em;
+    
+
+}
+
+#cart {
+    background-color: #FE9A76;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#cart:hover {
+    background-color: #EE1AAB;
+    transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
 
 /*
 valkoinen: #FFFFFF off-white: #FCDFEB
