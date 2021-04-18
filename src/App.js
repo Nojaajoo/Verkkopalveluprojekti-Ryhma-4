@@ -19,15 +19,51 @@ const URL = "http://localhost/verkkopalveluprojekti/";
 function App() {
   const [category, setCategory] = useState(null);
   const [cart, setCart] = useState([]);
+  // const [sumPrice, setSumPrice] = useState(0);
+  // const [cartItemAmount, setCartItemAmount] = useState(0);
 
   let location = useLocation();
+//muuttujat ostoskorin yhteenlasketulle hinnalle ja tavaroiden määrälle
+  var sum = 0;
+  var amount = 0;
 
   //callback function add product to cart
   function addToCart(product) {
-    const newCart = [...cart,product];
+    if (cart.some(item => item.tuotenro === product.tuotenro)) {
+      const existingProduct = cart.filter(item => item.tuotenro === product.tuotenro);
+      updateAmount(parseInt(existingProduct[0].amount) +1, product);
+    }
+    else {
+      product["amount"] = 1;
+      const newCart = [...cart,product];
     setCart(newCart);
     localStorage.setItem("cart",JSON.stringify(newCart));
-    console.log(localStorage)
+    }
+    // console.log(cart);
+    // console.log(product);
+  }
+
+  function removeFromCart(product) {
+    const itemsWithoutRemoved = cart.filter(item => item.tuotenro !== product.tuotenro);
+    setCart(itemsWithoutRemoved);
+    localStorage.setItem("cart",JSON.stringify(itemsWithoutRemoved));
+  }
+
+  function updateAmount(amount, product) {
+    if (amount <= 0) {
+      removeFromCart(product);
+      return;
+    }
+    product.amount = amount;
+    const index = cart.findIndex((item => item.tuotenro === product.tuotenro));
+    const modifiedCart = Object.assign([...cart],{[index]: product});
+    setCart(modifiedCart);
+    localStorage.setItem("cart",JSON.stringify(modifiedCart));
+  }
+
+  function emptyCart() {
+    setCart([]);
+    localStorage.removeItem("cart");
   }
 
   useEffect(() => {
@@ -44,7 +80,7 @@ function App() {
 
   return (
     <>
-    <Header url={URL} cart={cart} setCategory={setCategory}/>
+    <Header url={URL} cart={cart} amount={amount} setCategory={setCategory}/>
     <div className="App">
       
         <Carousel />
@@ -56,7 +92,16 @@ function App() {
             addToCart={addToCart}/>}
             exact
             />
-            <Route path="/Cart" render={() => <Cart cart={cart} setCart={setCart} url={URL} />} />
+            <Route path="/Cart" render={() => <Cart 
+              cart={cart} 
+              setCart={setCart} 
+              url={URL} 
+              removeFromCart={removeFromCart} 
+              updateAmount={updateAmount} 
+              emptyCart={emptyCart}
+              sum={sum}
+              amount={amount}
+              />} />
             <Route path="/Order" render={() => <Order />} />
             <Route path="/Info" render={() => <Info />} />
             <Route path="/Login" render={() => <Login />} />

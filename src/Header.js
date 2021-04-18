@@ -6,7 +6,7 @@ import {Link, BrowserRouter as Router} from 'react-router-dom';
 import CartIcon from "./CartIcon";
 
 
-export default function Header({url,cart,setCategory}) {
+export default function Header({url,cart,setCategory, amount}) {
     const [categories, setCategories] = useState([])
   //  const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
@@ -79,7 +79,7 @@ export default function Header({url,cart,setCategory}) {
                     </form>
                     <ul className="navbar-nav ml-auto cartIcon">
                     <li className="nav-item" >
-                    <CartIcon cart={cart} />
+                    <CartIcon cart={cart} amount={amount} />
                     </li>
                 </ul>
                 </ul>
