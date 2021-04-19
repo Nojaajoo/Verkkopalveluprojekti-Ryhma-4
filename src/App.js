@@ -24,7 +24,7 @@ function App() {
 
   let location = useLocation();
 //muuttujat ostoskorin yhteenlasketulle hinnalle ja tavaroiden määrälle
-  var sum = 0;
+  // var sum = 0;
   var amount = 0;
 
   //callback function add product to cart
@@ -99,7 +99,7 @@ function App() {
               removeFromCart={removeFromCart} 
               updateAmount={updateAmount} 
               emptyCart={emptyCart}
-              sum={sum}
+              // sum={sum}
               amount={amount}
               />} />
             <Route path="/Order" render={() => <Order />} />
