@@ -1,7 +1,7 @@
 import React from 'react'
 import './Order.css'
 
-export default function order() {
+export default function Order() {
     return (
         <div className="container">
         <form className="card mt-5">
