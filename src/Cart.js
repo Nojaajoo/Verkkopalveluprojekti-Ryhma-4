@@ -3,6 +3,7 @@ import "./Cart.css";
 import {useState, useEffect} from "react";
 import CartItem from './CartItem';
 import { render } from '@testing-library/react';
+import {Link} from "react-router-dom";
 // import uuid from "react-uuid";
 
 export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, amount}) {
@@ -87,7 +88,9 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
                             <div className="row cartRow" style={{borderTop: "1px solid rgba(0,0,0,.1)", padding: "2vh 0"}}>
                                 <div className="col cartCol">HINTA YHTEENSÄ</div>
                                 <div className="col cartCol text-right">&euro; {summa.toFixed(2)}</div>
-                            </div> <button className="btn btnCart">LÄHETÄ TILAUS</button>
+                            </div> 
+                            {/* <button className="btn btnCart">LÄHETÄ TILAUS</button> */}
+                            <Link to="/Order" className="btn btnCart">LÄHETÄ TILAUS</Link>
                         </div>
                     </div>
                 </div>
