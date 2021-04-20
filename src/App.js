@@ -13,6 +13,7 @@ import Cart from './Cart';
 import Order from './Order';
 import Info from './Info';
 import Login from './Login';
+import Admin from './Admin';
 
 const URL = "http://localhost/verkkopalveluprojekti/";
 
@@ -83,16 +84,20 @@ function App() {
     <Header url={URL} cart={cart} amount={amount} setCategory={setCategory}/>
     <div className="App">
       
-        <Carousel />
+        {/* <Carousel /> */}
         <div id="content" className="container-fluid">
           <Switch>
-            <Route path="/" render={() => <Home
-            url={URL}
-            category={category}
-            addToCart={addToCart}/>}
-            exact
-            />
-            <Route path="/Cart" render={() => <Cart 
+            <Route path="/" render={() => 
+            <>
+              <Carousel />
+              <Home
+              url={URL}
+              category={category}
+              addToCart={addToCart}
+              />
+            </>
+            } exact />
+            <Route path="/Cart" render={() => <><Carousel /><Cart 
               cart={cart} 
               setCart={setCart} 
               url={URL} 
@@ -101,13 +106,18 @@ function App() {
               emptyCart={emptyCart}
               // sum={sum}
               amount={amount}
-              />} />
-            <Route path="/Order" render={() => <Order />} />
-            <Route path="/Info" render={() => <Info />} />
+              /></>} />
+            <Route path="/Order" render={() => <><Carousel /><Order /></>} />
+            <Route path="/Info" render={() => <><Carousel /><Info /></>} />
             <Route path="/Login" render={() => <Login />} />
+            <Route path="/Admin" render={() => <Admin />} />
             <Route component={NotFound} />
+            
           </Switch>
+          
         </div>
+        
+        
     </div>
     <Footer />
   </>

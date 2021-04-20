@@ -2,6 +2,7 @@ import React from 'react';
 import "./Cart.css";
 import {useState, useEffect} from "react";
 import CartItem from './CartItem';
+import Order from './Order';
 import { render } from '@testing-library/react';
 import {Link} from "react-router-dom";
 // import uuid from "react-uuid";
@@ -17,22 +18,35 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
 
       // Tuotteiden yhteenlaskettu hinta (näyttää vain viimeisen tuotteen hinnan)
       useEffect(() => {
-            cart.forEach((product) => {
-                const total =+ parseFloat(product.hinta)*(product.amount);
-                if (delivery === 0) {
-                    setSumma(total);
-                } else {
-                    total = total + delivery;
-                    setSumma(total)
-                }
-            });
+        var total = 0;
 
+        if (delivery !== 0) {
+            total = total + delivery;
+        }
+
+        cart.forEach((product) => {
+            total = total + parseFloat(product.hinta)*(product.amount);
+        });
+        setSumma(total)
             
-      }, [cart])
+      }, [cart,delivery])
+
+      function changeDelivery(e) {
+          const value = parseFloat(e.target.value);
+          if (value === 0) {
+              if (delivery > 0) {
+                  setSumma(summa -5)
+              }   
+          } else {
+            setSumma(summa + 5)
+        }
+        setDelivery(value)
+      }
 
     // useEffect hinnan yhteenlaskemiselle  foreach )[cart]
     
         return (
+            <>
             <div id="shoppingcart">
                 <div className="card cartCard">
                     <div className="row cartRow">
@@ -79,9 +93,9 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
                             </div>
                             <form className="formCart">
                                 <p>Kuljetus</p> 
-                                <select name="toimitus" className="selectCart" >
-                                    <option onClick={() => setDelivery(5)}  value="5" className="text-muted">Kotiinkuljetus - &euro;5.00</option>
-                                    <option onClick={() => setDelivery(0)}  selected value="0" className="text-muted">Nouto myymälästä - &euro;0.00</option>
+                                <select name="toimitus" className="selectCart" onChange={e => changeDelivery(e)}>
+                                    <option value="5" className="text-muted">Kotiinkuljetus - &euro;5.00</option>
+                                    <option selected value="0" className="text-muted">Nouto myymälästä - &euro;0.00</option>
                                 </select>
                                 <p>Lahjakortti</p> <input className="inputCart" id="code" placeholder="Kirjoita koodi tähän"></input>
                             </form>
@@ -95,6 +109,11 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
                     </div>
                 </div>
             </div>
+            <div>
+                <Order />
+            </div>
+            
+            </>
         )
     
     
