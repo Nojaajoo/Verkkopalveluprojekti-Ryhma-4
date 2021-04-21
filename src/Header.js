@@ -6,8 +6,8 @@ import {Link, BrowserRouter as Router} from 'react-router-dom';
 import CartIcon from "./CartIcon";
 
 
-export default function Header({url,cart,setCategory, amount}) {
-    const [categories, setCategories] = useState([])
+export default function Header({url,cart,setCategory, amount, categories, setCategories}) {
+    //const [categories, setCategories] = useState([])
   //  const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
         try {
