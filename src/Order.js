@@ -15,7 +15,9 @@ export default function Order({url,cart,emptyCart}) {
   function order(e) {
     e.preventDefault();
 
-    fetch("http://localhost/verkkopalveluprojekti/order/add.php",{
+    const url = "http://localhost/verkkopalveluprojekti/"
+
+    fetch(url + "order/add.php",{
       method: 'POST',
       header: {
         'Accept': 'application/json',
