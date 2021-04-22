@@ -22,6 +22,8 @@ function App() {
   const [cart, setCart] = useState([]);
   // const [sumPrice, setSumPrice] = useState(0);
   // const [cartItemAmount, setCartItemAmount] = useState(0);
+  const [delivery, setDelivery] = useState(0); //ostoskoriin välitettävä toimitusmaksun tilamuuttuja, ettei valinta katoa kun käy muualla
+  const [categories, setCategories] = useState([])
 
   let location = useLocation();
 //muuttujat ostoskorin yhteenlasketulle hinnalle ja tavaroiden määrälle
@@ -81,7 +83,7 @@ function App() {
 
   return (
     <>
-    <Header url={URL} cart={cart} amount={amount} setCategory={setCategory}/>
+    <Header url={URL} cart={cart} amount={amount} setCategory={setCategory} categories={categories} setCategories={setCategories}/>
     <div className="App">
       
         {/* <Carousel /> */}
@@ -104,13 +106,15 @@ function App() {
               removeFromCart={removeFromCart} 
               updateAmount={updateAmount} 
               emptyCart={emptyCart}
+              delivery={delivery}
+              setDelivery={setDelivery}
               // sum={sum}
               amount={amount}
               /></>} />
             <Route path="/Order" render={() => <><Carousel /> <Order url={URL}cart={cart}emptyCart={emptyCart}/></>} />
             <Route path="/Info" render={() => <><Carousel /><Info /></>} />
             <Route path="/Login" render={() => <Login />} />
-            <Route path="/Admin" render={() => <Admin />} />
+            <Route path="/Admin" render={() => <Admin categories={categories} />} />
             <Route component={NotFound} />
             
           </Switch>

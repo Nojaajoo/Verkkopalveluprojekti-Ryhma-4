@@ -109,7 +109,7 @@ export default function Order({url,cart,emptyCart}) {
           <div className="card-header korttiTausta">
             <h4>Yhteystiedot</h4>
           </div>
-            <div className="car-body row pt-3 ps-3">
+            <div className="card-body row pt-3 ps-3">
             
             <div class="input-group mb-3 col-6 formItem">
               <span class="input-group-text inputTeksti" id="basic-addon1">Etunimi</span>

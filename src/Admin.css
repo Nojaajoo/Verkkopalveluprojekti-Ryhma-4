@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  /* height: 500px; */
 }
 
 #admincontent {
@@ -19,3 +19,60 @@
     border-radius: 10px;
     
 }
+
+.newProductFormInput {
+  padding: 0.1em;
+  margin: auto;
+  margin-top: 6px;
+  padding-bottom: 1em;
+  border-radius: 10px;
+}
+
+.newProductFormInput:first-child {
+  margin-top: 2em;
+}
+
+.newProductFormInput:nth-child(odd) {
+  background-color: #fcdfeb33;
+}
+
+.newProductFormInput:nth-child(even) {
+  background-color: #fe9a761c;
+}
+
+.newProductFormInput:nth-child(odd):focus-within {
+  background-color: #FCDFEB;
+}
+
+.newProductFormInput:nth-child(even):focus-within {
+  background-color: #fe9a76b4;
+}
+
+.btnAdmin {
+  background-color: #FE9A76;
+  color: white;
+  width: 100%;
+  font-size: 0.8rem;
+  padding: 1vh;
+  border-radius: 10px;
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+.btnAdmin:hover {
+  background-color: #EE1AAB;
+  color: white;
+}
+
+/* .imagefileupload {
+  padding-top: 2.1em;
+  padding-bottom: 3em;
+} */
+
+
+/*
+valkoinen: #FFFFFF off-white: #FCDFEB
+korostuspinkki: #EE1AAB
+perusvaaleanpunainen: #F38088
+secondarydonitsiväri: #FE9A76
+tumma: #491D0D
+*/

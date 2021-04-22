@@ -6,9 +6,9 @@ import Order from './Order';
 import { render } from '@testing-library/react';
 // import uuid from "react-uuid";
 
-export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, amount}) {
+export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, amount, delivery, setDelivery}) {
     const [summa, setSumma] = useState(0);
-    const [delivery, setDelivery] = useState(0);
+    // const [delivery, setDelivery] = useState(0);
     
 
     function changeAmount(e,product,index) {
@@ -42,7 +42,7 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
         setDelivery(value)
       }
 
-    // useEffect hinnan yhteenlaskemiselle  foreach )[cart]
+
     
         return (
             <>
@@ -93,8 +93,8 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
                             <form className="formCart">
                                 <p>Kuljetus</p> 
                                 <select name="toimitus" className="selectCart" onChange={e => changeDelivery(e)}>
+                                    <option value="0" className="text-muted">Nouto myymälästä - &euro;0.00</option>
                                     <option value="5" className="text-muted">Kotiinkuljetus - &euro;5.00</option>
-                                    <option selected value="0" className="text-muted">Nouto myymälästä - &euro;0.00</option>
                                 </select>
                                 <p>Lahjakortti</p> <input className="inputCart" id="code" placeholder="Kirjoita koodi tähän"></input>
                             </form>
