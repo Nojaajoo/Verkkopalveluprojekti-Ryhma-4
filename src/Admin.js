@@ -43,22 +43,15 @@ export default function Admin({categories,url}) {
         .then(res => {
             console.log(res);
             status = parseInt(res.status);
-        //     // let r = res.json();
-        //     // console.log(r);
-        //     // return r;
-        //     return res.json();
         })
         .then(
             (res) => {
                 console.log(res);
-                // status = parseInt(res.status);
-                // console.log(status);
             	if (status === 200) {
                     if (imagefile != null) {
-                        sendImageFile();
-                    // //     // setImagefile(null);
+                        sendImageFile(); // lähetetään onnistuneen tuotteen lisäyksen jälkeen kyseiselle tuotteelle kuuluva tuotekuva backendiin
+                        setImagefile(null);
                     }
-                    // console.log(res);
                     alert("lisäys onnistui!");
             	} else {
             	alert("testi")
@@ -80,10 +73,6 @@ export default function Admin({categories,url}) {
                 body: formData
             }
         )
-        .then((res => res.json())
-        .then ((result) => {
-            console.log(result);
-        }))
     };
     
 
@@ -121,7 +110,7 @@ export default function Admin({categories,url}) {
                                         <label htmlFor="hinta" className="col-form-label">Hinta:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input onChange={e => setHinta(Number(e.target.value))} name="hinta" type="number" min="0" step=".01" id="hinta" className="form-control" aria-describedby="hintaHelpInline"></input>
+                                        <input onChange={e => setHinta(e.target.value)} name="hinta" type="number" min="0" step=".01" id="hinta" className="form-control" aria-describedby="hintaHelpInline"></input>
                                     </div>
                                     <div className="col-4">
                                         <span id="hintaHelpInline" className="form-text">
@@ -135,7 +124,7 @@ export default function Admin({categories,url}) {
                                         <label htmlFor="kustannus" className="col-form-label">Kustannus:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input onChange={e => setKustannus(Number(e.target.value))} name="kustannus" type="number" min="0" step=".01" id="kustannus" className="form-control" aria-describedby="kustannusHelpInline"></input>
+                                        <input onChange={e => setKustannus(e.target.value)} name="kustannus" type="number" min="0" step=".01" id="kustannus" className="form-control" aria-describedby="kustannusHelpInline"></input>
                                     </div>
                                     <div className="col-4">
                                         <span id="kustannusHelpInline" className="form-text">
@@ -202,40 +191,16 @@ export default function Admin({categories,url}) {
                                     </div>
                                     <div className="col-4">
                                         <span id="kuvatiedostoHelpInline" className="form-text">
-                                        Lataa tuotteen kuvatiedosto tästä.
+                                        Lataa tuotteen kuvatiedosto tästä. (tiedostotyyppi: .png)
                                         </span>
                                     </div>
                                 </div>
-                                {/* jos ei onnistu lukea kuvatiedoston nimeä file inputista, voi sen varmaan lukea tästä alta */}
-                                {/* {imagefile != null ? (<><p onChange={() => setKuva(imagefile.name)} hidden name="kuva">{imagefile.name}</p></>) : (null)} */}
-                                
-                                {/* tuotteen kuvatiedoston nimi tallennetaan piilotettuun input fieldiin, josta se luetaan lähetettäessä backendiin */}
-                                {/* <div hidden className="row g-3 align-items-center newProductFormInput">
-                                    <div className="col-3">
-                                        <label htmlFor="kuva" className="col-form-label">Kuva:</label>
-                                    </div>
-                                    <div className="col-5">
-                                        <input name="kuva" maxLength="20" type="text" id="kuva" className="form-control" aria-describedby="kuvaHelpInline" 
-                                        value={imagefile.name} >
-                                            
-                                        </input>
-                                    </div>
-                                    <div className="col-4">
-                                        <span id="kuvaHelpInline" className="form-text">
-                                        Tuotteen kuvatiedoston nimi.
-                                        </span>
-                                    </div>
-                                </div> */}
                             </div>
 
                             <div className=" col-12 col-sm-3 align-self-center">
                                 <button className="btn btnAdmin" >Lisää uusi tuote</button>
                             </div>                          
                         </form>
-                        {/* <form onSubmit={e => sendImageFile(e)}>
-                        <input name="imagefiletest" onChange={e => setImagefile(e.target.files[0])} type="file" id="imagefiletest"></input>
-                        <button>submit</button>
-                        </form> */}
                     </div>
                 </div>
 
