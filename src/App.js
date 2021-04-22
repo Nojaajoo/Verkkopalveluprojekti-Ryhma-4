@@ -114,7 +114,7 @@ function App() {
             <Route path="/Order" render={() => <><Carousel /><Order /></>} />
             <Route path="/Info" render={() => <><Carousel /><Info /></>} />
             <Route path="/Login" render={() => <Login />} />
-            <Route path="/Admin" render={() => <Admin categories={categories} />} />
+            <Route path="/Admin" render={() => <Admin categories={categories} url={URL} />} />
             <Route component={NotFound} />
             
           </Switch>
