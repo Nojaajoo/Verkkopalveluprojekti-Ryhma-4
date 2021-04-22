@@ -4,7 +4,6 @@ import {useState, useEffect} from "react";
 import CartItem from './CartItem';
 import Order from './Order';
 import { render } from '@testing-library/react';
-import {Link} from "react-router-dom";
 // import uuid from "react-uuid";
 
 export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, amount, delivery, setDelivery}) {
@@ -103,14 +102,13 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
                                 <div className="col cartCol">HINTA YHTEENSÄ</div>
                                 <div className="col cartCol text-right">&euro; {summa.toFixed(2)}</div>
                             </div> 
-                            {/* <button className="btn btnCart">LÄHETÄ TILAUS</button> */}
-                            <Link to="/Order" className="btn btnCart">LÄHETÄ TILAUS</Link>
+                            <button className="btn btnCart">LÄHETÄ TILAUS</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                <Order />
+                <Order url={URL}cart={cart}emptyCart={emptyCart}/>
             </div>
             
             </>
