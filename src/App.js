@@ -107,7 +107,7 @@ function App() {
               // sum={sum}
               amount={amount}
               /></>} />
-            <Route path="/Order" render={() => <><Carousel /><Order /></>} />
+            <Route path="/Order" render={() => <><Carousel /> <Order url={URL}cart={cart}emptyCart={emptyCart}/></>} />
             <Route path="/Info" render={() => <><Carousel /><Info /></>} />
             <Route path="/Login" render={() => <Login />} />
             <Route path="/Admin" render={() => <Admin />} />
