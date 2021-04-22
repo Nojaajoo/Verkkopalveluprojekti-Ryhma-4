@@ -47,6 +47,9 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
                     <li className="nav-item navText">
                     <a className="nav-link" href="/Login">Kirjaudu</a>
                     </li>
+                    <li className="nav-item navText">
+                    <a className="nav-link" href="/Admin">Admin (poista kun valmis)</a>
+                    </li>
                     <li className="nav-item dropdown navText">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Tuotteet
