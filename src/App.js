@@ -14,6 +14,8 @@ import Order from './Order';
 import Info from './Info';
 import Login from './Login';
 import Admin from './Admin';
+import Indicator from './Indicator';
+import Logout from './logout';
 
 const URL = "http://localhost/verkkopalveluprojekti/";
 
@@ -23,7 +25,8 @@ function App() {
   // const [sumPrice, setSumPrice] = useState(0);
   // const [cartItemAmount, setCartItemAmount] = useState(0);
   const [delivery, setDelivery] = useState(0); //ostoskoriin välitettävä toimitusmaksun tilamuuttuja, ettei valinta katoa kun käy muualla
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
+  const [user, setUser] = useState(null);
 
   let location = useLocation();
 //muuttujat ostoskorin yhteenlasketulle hinnalle ja tavaroiden määrälle
@@ -112,9 +115,11 @@ function App() {
               amount={amount}
               /></>} />
             <Route path="/Order" render={() => <><Carousel /> <Order url={URL}cart={cart}emptyCart={emptyCart}/></>} />
-            <Route path="/Info" render={() => <><Carousel /><Info /></>} />
-            <Route path="/Login" render={() => <Login />} />
+            <Route path="/Info" render={() => <><Carousel /><Info setUser={setUser}/></>} />
+            <Route path="/Login" render={() => <Login url={URL} setUser={setUser} user={user} />} />
             <Route path="/Admin" render={() => <Admin categories={categories} />} />
+            <Route path="/Indicator" render={() => <Indicator user={user} /> } />
+            <Route path="/Logout" render={() => <Logout setUser={setUser} url={URL} /> } />
             <Route component={NotFound} />
             
           </Switch>

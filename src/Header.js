@@ -4,6 +4,7 @@ import logo from "./img/donitsilogo.png";
 import {useState,useEffect} from 'react';
 import {Link, BrowserRouter as Router} from 'react-router-dom';
 import CartIcon from "./CartIcon";
+import Indicator from './Indicator';
 
 
 export default function Header({url,cart,setCategory, amount, categories, setCategories}) {
@@ -87,6 +88,9 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
                 </div>
             </div>
         </nav>
+            <div className="container text-center indicator">
+                <Indicator/>
+            </div>
         </>    
     )
 }
