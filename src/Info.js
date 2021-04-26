@@ -7,12 +7,13 @@ export default function Info({user}) {
 
     if (user===null) {
         return <Redirect to="/login" />
-    }
+    } else {
 
     return (
         <div>
         <p>Home</p>
-        <Link to="/">Logout</Link>
-    </div>
+        <Link to="/logout">Logout</Link>
+        </div>
     )
+    }
 }

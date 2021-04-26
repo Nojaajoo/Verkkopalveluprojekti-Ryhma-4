@@ -29,7 +29,7 @@ export default function Login({url, setUser, user}) {
 
         if(response.ok) {
             setUser(json);
-            console.log(user);
+            console.log(json);
             history.push('/admin');
         } else {
             alert("Error logging in.")

@@ -86,7 +86,7 @@ function App() {
 
   return (
     <>
-    <Header url={URL} cart={cart} amount={amount} setCategory={setCategory} categories={categories} setCategories={setCategories}/>
+    <Header url={URL} cart={cart} amount={amount} setCategory={setCategory} categories={categories} setCategories={setCategories} user={user}/>
     <div className="App">
       
         {/* <Carousel /> */}
@@ -117,7 +117,7 @@ function App() {
             <Route path="/Order" render={() => <><Carousel /> <Order url={URL}cart={cart}emptyCart={emptyCart}/></>} />
             <Route path="/Info" render={() => <><Carousel /><Info setUser={setUser}/></>} />
             <Route path="/Login" render={() => <Login url={URL} setUser={setUser} user={user} />} />
-            <Route path="/Indicator" render={() => <Indicator user={user} /> } />
+            {/* <Route path="/Indicator" render={() => <Indicator user={user} /> } /> */}
             <Route path="/Logout" render={() => <Logout setUser={setUser} url={URL} /> } />
             <Route path="/Admin" render={() => <Admin categories={categories} url={URL} />} />
             <Route component={NotFound} />

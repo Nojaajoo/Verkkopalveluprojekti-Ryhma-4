@@ -7,7 +7,7 @@ import CartIcon from "./CartIcon";
 import Indicator from './Indicator';
 
 
-export default function Header({url,cart,setCategory, amount, categories, setCategories}) {
+export default function Header({url,cart,setCategory, amount, categories, setCategories, user}) {
     //const [categories, setCategories] = useState([])
   //  const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
@@ -40,16 +40,16 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav linkit">
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/">Etusivu</a>
+                    <Link className="nav-link" to="/">Etusivu</Link>
                     </li>
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/Info">Tietoa meistä</a>
+                    <Link className="nav-link" to="/Info">Tietoa meistä</Link>
                     </li>
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/Login">Kirjaudu</a>
+                    <Link className="nav-link" to="/Login">Kirjaudu</Link>
                     </li>
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/Admin">Admin (poista kun valmis)</a>
+                    <Link className="nav-link" to="/Admin">Admin (poista kun valmis)</Link>
                     </li>
                     <li className="nav-item dropdown navText">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -92,7 +92,7 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
             </div>
         </nav>
             <div className="container text-center indicator">
-                <Indicator/>
+                <Indicator user={user}/>
             </div>
         </>    
     )

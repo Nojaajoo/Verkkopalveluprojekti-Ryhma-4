@@ -10,9 +10,10 @@ export default function Logout({setUser, url}) {
                 credentials: 'include'
             }
     
-            
+            const address = url + "logout/logout.php"
+            console.log(address);
             try {
-                await fetch(url + "logout.php", config);
+                await fetch(address, config);
                 setUser(null);
             } catch (error) {
                 alert(error);
