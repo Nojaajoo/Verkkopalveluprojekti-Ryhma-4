@@ -92,7 +92,7 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
             </div>
         </nav>
             <div className="container text-center indicator">
-                <Indicator user={user}/>
+                <Indicator user={user} />
             </div>
         </>    
     )

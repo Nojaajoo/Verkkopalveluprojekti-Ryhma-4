@@ -86,10 +86,10 @@ function App() {
 
   return (
     <>
-    <Header url={URL} cart={cart} amount={amount} setCategory={setCategory} categories={categories} setCategories={setCategories} user={user}/>
+    <Header url={URL} cart={cart} amount={amount} setCategory={setCategory} categories={categories} setCategories={setCategories} user={user} />
     <div className="App">
       
-        {/* <Carousel /> */}
+        {/* < Indicator user={user}/> */}
         <div id="content" className="container-fluid">
           <Switch>
             <Route path="/" render={() => 
