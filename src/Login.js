@@ -29,9 +29,8 @@ export default function Login({url, setUser, user}) {
 
         if(response.ok) {
             setUser(json);
+            console.log(user);
             history.push('/admin');
-            let r = user;
-            console.log(r);
         } else {
             alert("Error logging in.")
         }

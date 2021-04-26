@@ -117,9 +117,9 @@ function App() {
             <Route path="/Order" render={() => <><Carousel /> <Order url={URL}cart={cart}emptyCart={emptyCart}/></>} />
             <Route path="/Info" render={() => <><Carousel /><Info setUser={setUser}/></>} />
             <Route path="/Login" render={() => <Login url={URL} setUser={setUser} user={user} />} />
-            <Route path="/Admin" render={() => <Admin categories={categories} />} />
             <Route path="/Indicator" render={() => <Indicator user={user} /> } />
             <Route path="/Logout" render={() => <Logout setUser={setUser} url={URL} /> } />
+            <Route path="/Admin" render={() => <Admin categories={categories} url={URL} />} />
             <Route component={NotFound} />
             
           </Switch>

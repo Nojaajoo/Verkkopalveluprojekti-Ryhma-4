@@ -2,8 +2,79 @@ import React from 'react';
 import "./Admin.css";
 import {useState,useEffect} from "react";
 
-export default function Admin({categories}) {
-    const [imagefile, setImagefile] = useState(null);
+export default function Admin({categories,url}) {
+    const [imagefile, setImagefile] = useState(null); // kuvatiedosto, josta erotellaan kuvan nimi
+    
+    const [tuotenimi, setTuotenimi] = useState("");
+    const [hinta, setHinta] = useState(0);
+    const [kustannus, setKustannus] = useState(0);
+    const [trnro, setTrnro] = useState(0);
+    const [maku, setMaku] = useState("");
+    const [taytemaku, setTaytemaku] = useState("");
+    const [kuva, setKuva] = useState("");
+
+    //laittaa kuvatiedoston nimen kuva muuttujaan
+    useEffect(() => {
+        if (imagefile != null) {
+            setKuva(imagefile.name);
+        }
+    }, [imagefile])
+
+    //uuden tuotteen lähettäminen backendiin
+    function addNewProduct(e) {
+        e.preventDefault();
+        let status = 0;
+        fetch( url + "admin/newProduct.php",{
+            method: 'POST',
+            headers: {
+            	'Accept': 'application/json',
+            	'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            	tuotenimi: tuotenimi,
+                hinta: hinta,
+                kustannus: kustannus,
+                trnro: trnro,
+                maku: maku,
+                taytemaku: taytemaku,
+                kuva: kuva
+            })
+        })
+        .then(res => {
+            console.log(res);
+            status = parseInt(res.status);
+        })
+        .then(
+            (res) => {
+                console.log(res);
+            	if (status === 200) {
+                    if (imagefile != null) {
+                        sendImageFile(); // lähetetään onnistuneen tuotteen lisäyksen jälkeen kyseiselle tuotteelle kuuluva tuotekuva backendiin
+                        setImagefile(null);
+                    }
+                    alert("lisäys onnistui!");
+            	} else {
+            	alert("testi")
+            	}
+            }, (error) => {
+            	alert(error);
+            }
+        )
+    };
+
+    //kuvatiedoston tallentaminen backendiin
+    function sendImageFile() {
+        
+        const formData = new FormData();
+        formData.append("imagefile",imagefile);
+        fetch (url + "admin/saveProductImage.php",
+            {
+                method: "POST",
+                body: formData
+            }
+        )
+    };
+    
 
     return (
         <div id="Adminpage">
@@ -18,14 +89,14 @@ export default function Admin({categories}) {
                         <h5>Uusien tuotteiden lisäys</h5>
                     </div>
                     <div className="col-12">
-                        <form className="row justify-content-evenly" id="newproduct" action="">
+                        <form className="row justify-content-evenly" id="newproduct" onSubmit={addNewProduct}>
                             <div className="col-12" className="newProductFormInputs">
                                 <div className="row g-3 align-items-center newProductFormInput">
                                     <div className="col-3">
-                                        <label for="tuotenimi" className="col-form-label">Tuotenimi:</label>
+                                        <label htmlFor="tuotenimi" className="col-form-label">Tuotenimi:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input name="tuotenimi" maxLength="30" type="text" id="tuotenimi" className="form-control" aria-describedby="tuotenimiHelpInline"></input>
+                                        <input onChange={e => setTuotenimi(e.target.value)} required name="tuotenimi" maxLength="30" type="text" id="tuotenimi" className="form-control" aria-describedby="tuotenimiHelpInline"></input>
                                     </div>
                                     <div className="col-4">
                                         <span id="tuotenimiHelpInline" className="form-text">
@@ -34,50 +105,50 @@ export default function Admin({categories}) {
                                     </div>
                                 </div>
 
-                                <div class="row g-3 align-items-center newProductFormInput">
-                                    <div class="col-3">
-                                        <label for="hinta" class="col-form-label">Hinta:</label>
+                                <div className="row g-3 align-items-center newProductFormInput">
+                                    <div className="col-3">
+                                        <label htmlFor="hinta" className="col-form-label">Hinta:</label>
                                     </div>
-                                    <div class="col-5">
-                                        <input name="hinta" type="number" min="0" step=".01" id="hinta" class="form-control" aria-describedby="hintaHelpInline"></input>
+                                    <div className="col-5">
+                                        <input onChange={e => setHinta(e.target.value)} name="hinta" type="number" min="0" step=".01" id="hinta" className="form-control" aria-describedby="hintaHelpInline"></input>
                                     </div>
-                                    <div class="col-4">
-                                        <span id="hintaHelpInline" class="form-text">
+                                    <div className="col-4">
+                                        <span id="hintaHelpInline" className="form-text">
                                         Syötä tuotteen hinta.
                                         </span>
                                     </div>
                                 </div>
 
-                                <div class="row g-3 align-items-center newProductFormInput">
-                                    <div class="col-3">
-                                        <label for="kustannus" class="col-form-label">Kustannus:</label>
+                                <div className="row g-3 align-items-center newProductFormInput">
+                                    <div className="col-3">
+                                        <label htmlFor="kustannus" className="col-form-label">Kustannus:</label>
                                     </div>
-                                    <div class="col-5">
-                                        <input name="kustannus" type="number" min="0" step=".01" id="kustannus" class="form-control" aria-describedby="kustannusHelpInline"></input>
+                                    <div className="col-5">
+                                        <input onChange={e => setKustannus(e.target.value)} name="kustannus" type="number" min="0" step=".01" id="kustannus" className="form-control" aria-describedby="kustannusHelpInline"></input>
                                     </div>
-                                    <div class="col-4">
-                                        <span id="kustannusHelpInline" class="form-text">
+                                    <div className="col-4">
+                                        <span id="kustannusHelpInline" className="form-text">
                                         Syötä tuotteen kustannus.
                                         </span>
                                     </div>
                                 </div>
 
-                                <div class="row g-3 align-items-center newProductFormInput">
-                                    <div class="col-3">
-                                        <label for="trnro" class="col-form-label">Tuoteryhmä:</label>
+                                <div className="row g-3 align-items-center newProductFormInput">
+                                    <div className="col-3">
+                                        <label htmlFor="trnro" className="col-form-label">Tuoteryhmä:</label>
                                     </div>
-                                    <div class="col-5">
-                                    <select name="trnro" id="trnro" class="form-select" aria-describedby="trnroHelpInline">
-                                        <option selected value={null}>Valitse tuoteryhmän numero</option>
+                                    <div className="col-5">
+                                    <select onChange={e => setTrnro(Number(e.target.value))} required name="trnro" id="trnro" className="form-select" aria-describedby="trnroHelpInline">
+                                        <option defaultValue value={null}>Valitse tuoteryhmän numero</option>
                                         {categories.map(tuoteryhma => {
                                             return (
-                                                <option value={tuoteryhma.trnro}>{tuoteryhma.trnro}: {tuoteryhma.trnimi}</option>
+                                                <option key={tuoteryhma.trnro} value={tuoteryhma.trnro}>{tuoteryhma.trnro}: {tuoteryhma.trnimi}</option>
                                             );
                                         })}
                                     </select>
                                     </div>
-                                    <div class="col-4">
-                                        <span id="trnroHelpInline" class="form-text">
+                                    <div className="col-4">
+                                        <span id="trnroHelpInline" className="form-text">
                                         Valitse tuoteryhmä johon tuote kuuluu. (Pakollinen.)
                                         </span>
                                     </div>
@@ -85,10 +156,10 @@ export default function Admin({categories}) {
 
                                 <div className="row g-3 align-items-center newProductFormInput">
                                     <div className="col-3">
-                                        <label for="maku" className="col-form-label">Maku:</label>
+                                        <label htmlFor="maku" className="col-form-label">Maku:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input name="maku" maxLength="20" type="text" id="maku" className="form-control" aria-describedby="makuHelpInline"></input>
+                                        <input onChange={e => setMaku(e.target.value)} name="maku" maxLength="20" type="text" id="maku" className="form-control" aria-describedby="makuHelpInline"></input>
                                     </div>
                                     <div className="col-4">
                                         <span id="makuHelpInline" className="form-text">
@@ -99,10 +170,10 @@ export default function Admin({categories}) {
 
                                 <div className="row g-3 align-items-center newProductFormInput">
                                     <div className="col-3">
-                                        <label for="taytemaku" className="col-form-label">Täytemaku:</label>
+                                        <label htmlFor="taytemaku" className="col-form-label">Täytemaku:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input name="taytemaku" maxLength="20" type="text" id="taytemaku" className="form-control" aria-describedby="taytemakuHelpInline"></input>
+                                        <input onChange={e => setTaytemaku(e.target.value)} name="taytemaku" maxLength="20" type="text" id="taytemaku" className="form-control" aria-describedby="taytemakuHelpInline"></input>
                                     </div>
                                     <div className="col-4">
                                         <span id="taytemakuHelpInline" className="form-text">
@@ -113,41 +184,21 @@ export default function Admin({categories}) {
 
                                 <div className="row g-3 align-items-center newProductFormInput imagefileupload">
                                     <div className="col-3">
-                                        <label for="kuvatiedosto" className="col-form-label">Kuvatiedosto:</label>
+                                        <label htmlFor="imagefile" className="col-form-label">Kuvatiedosto:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input name="kuvatiedosto" onChange={e => setImagefile(e.target.files[0])} type="file" id="kuvatiedosto" className="form-control" aria-describedby="kuvatiedostoHelpInline"></input>
+                                        <input name="imagefile" onChange={e => setImagefile(e.target.files[0])} type="file" id="imagefile" className="form-control" aria-describedby="kuvatiedostoHelpInline"></input>
                                     </div>
                                     <div className="col-4">
                                         <span id="kuvatiedostoHelpInline" className="form-text">
-                                        Lataa tuotteen kuvatiedosto tästä.
+                                        Lataa tuotteen kuvatiedosto tästä. (tiedostotyyppi: .png)
                                         </span>
                                     </div>
                                 </div>
-                                {/* jos ei onnistu lukea kuvatiedoston nimeä file inputista, voi sen varmaan lukea tästä alta */}
-                                {imagefile != null ? (<><p hidden name="kuva">{imagefile.name}</p></>) : (null)}
-                                
-                                {/* tuotteen kuvatiedoston nimi tallennetaan piilotettuun input fieldiin, josta se luetaan lähetettäessä backendiin */}
-                                {/* <div hidden className="row g-3 align-items-center newProductFormInput">
-                                    <div className="col-3">
-                                        <label for="kuva" className="col-form-label">Kuva:</label>
-                                    </div>
-                                    <div className="col-5">
-                                        <input name="kuva" maxLength="20" type="text" id="kuva" className="form-control" aria-describedby="kuvaHelpInline" 
-                                        value={imagefile.name} >
-                                            
-                                        </input>
-                                    </div>
-                                    <div className="col-4">
-                                        <span id="kuvaHelpInline" className="form-text">
-                                        Tuotteen kuvatiedoston nimi.
-                                        </span>
-                                    </div>
-                                </div> */}
                             </div>
 
                             <div className=" col-12 col-sm-3 align-self-center">
-                                <input className="btn btnAdmin" type="button" value="Lisää uusi tuote"/>
+                                <button className="btn btnAdmin" >Lisää uusi tuote</button>
                             </div>                          
                         </form>
                     </div>
