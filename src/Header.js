@@ -33,7 +33,7 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
         <>
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid navbarContent">
-                <a className="navbar-brand" href="/"><img src={logo} alt="logo" width="120" className="d-inline-block" /></a>
+                <Link className="navbar-brand" to="/"><img src={logo} alt="logo" width="120" className="d-inline-block" /></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
