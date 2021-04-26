@@ -290,7 +290,7 @@ export default function Admin({categories,url}) {
                                     </div>
                                     <div className="col-4">
                                         <span id="tuotenroHelpInline" className="form-text">
-                                        Syötä tilauksen tuotenumero.
+                                        Syötä tilauksen kappaleen tuotenumero.
                                         </span>
                                     </div>
                                 </div>
@@ -304,7 +304,7 @@ export default function Admin({categories,url}) {
                                     </div>
                                     <div className="col-4">
                                         <span id="kplHelpInline" className="form-text">
-                                        Syötä tilauksen kappalemäärä.
+                                        Syötä tilauksen tuotteiden kappalemäärä.
                                         </span>
                                     </div>
                                 </div>
