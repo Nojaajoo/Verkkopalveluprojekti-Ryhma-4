@@ -7,7 +7,7 @@ import CartIcon from "./CartIcon";
 import Indicator from './Indicator';
 
 
-export default function Header({url,cart,setCategory, amount, categories, setCategories}) {
+export default function Header({url,cart,setCategory, amount, categories, setCategories, user}) {
     //const [categories, setCategories] = useState([])
   //  const url = "http://localhost/donitsikauppa/";
     useEffect(async() => {
@@ -92,7 +92,7 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
             </div>
         </nav>
             <div className="container text-center indicator">
-                <Indicator/>
+                <Indicator user={user} />
             </div>
         </>    
     )
