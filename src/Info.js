@@ -5,14 +5,16 @@ import {Link} from 'react-router-dom'
 
 export default function Info({user}) {
 
-    if (user===null) {
-        return <Redirect to="/login" />
-    }
+    if (sessionStorage.getItem('kayttaja' != null)) {
+        return (
+            <div>
+            <p>Home</p>
+            <Link to="/logout">Logout</Link>
+            </div>
+        )
+        
+    } else {
 
-    return (
-        <div>
-        <p>Home</p>
-        <Link to="/">Logout</Link>
-    </div>
-    )
+    return <Redirect to="/login" />
+    }
 }

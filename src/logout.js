@@ -1,7 +1,10 @@
 import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import {useHistory} from 'react-router'
 
 export default function Logout({setUser, url}) {
+
+    let history = useHistory();
 
     useEffect(() => {
         async function logout() {
@@ -9,11 +12,15 @@ export default function Logout({setUser, url}) {
                 method: "GET",
                 credentials: 'include'
             }
-    
             
+            
+            const address = url + "login/logout.php"
+            console.log(address);
             try {
-                await fetch(url + "logout.php", config);
-                setUser(null);
+                await fetch(address, config);
+                setUser(null); 
+                sessionStorage.setItem('kayttaja', null);
+                // history.push('/');
             } catch (error) {
                 alert(error);
             }

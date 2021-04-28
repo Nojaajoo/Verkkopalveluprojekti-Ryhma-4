@@ -33,23 +33,23 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
         <>
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid navbarContent">
-                <a className="navbar-brand" href="/"><img src={logo} alt="logo" width="120" className="d-inline-block" /></a>
+                <Link className="navbar-brand" to="/"><img src={logo} alt="logo" width="120" className="d-inline-block" /></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav linkit">
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/">Etusivu</a>
+                    <Link className="nav-link" to="/">Etusivu</Link>
                     </li>
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/Info">Tietoa meistä</a>
+                    <Link className="nav-link" to="/Info">Tietoa meistä</Link>
                     </li>
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/Login">Kirjaudu</a>
+                    <Link className="nav-link" to="/Login">Kirjaudu</Link>
                     </li>
                     <li className="nav-item navText">
-                    <a className="nav-link" href="/Admin">Admin (poista kun valmis)</a>
+                    <Link className="nav-link" to="/Admin">Admin (poista kun valmis)</Link>
                     </li>
                     <li className="nav-item dropdown navText">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
