@@ -2,7 +2,7 @@ import React from 'react';
 import "./Admin.css";
 import {useState,useEffect} from "react";
 import AdminNewProduct from './AdminNewProduct';
-import {Switch,Route} from 'react-router-dom';
+
 
 export default function Admin({categories,url}) {
     const [imagefile, setImagefile] = useState(null); // kuvatiedosto, josta erotellaan kuvan nimi
@@ -20,6 +20,25 @@ export default function Admin({categories,url}) {
     const [tuotenro, setTuotenro] = useState(0);
     const [kpl, setKpl] = useState(0);
 
+    const [adminproducts, setAdminproducts] = useState([]);
+
+    // tuotteiden tietojen näyttäminen
+    useEffect(async() => {
+        // if (category !== null) {
+        try {
+          const response = await fetch(url + 'admin/getProductsToEdit.php/');
+          const json = await response.json();
+          if (response.ok) {
+            console.log(json)
+            setAdminproducts(json);
+          } else {
+            alert(json.error);
+          }
+        } catch (error) {
+          alert(error);
+        }
+    //   }
+      }, [])
 
     //laittaa kuvatiedoston nimen kuva muuttujaan
     useEffect(() => {
@@ -121,6 +140,8 @@ export default function Admin({categories,url}) {
         <div id="Adminpage">
             <div id="admincontent">
 
+                {/* uusien tuotteiden lisäys */}
+
                 <div className="row">
                     <h3 className="col-12 text-center mb-5"><b>Ylläpito</b></h3>
                 </div>
@@ -133,6 +154,40 @@ export default function Admin({categories,url}) {
                     <AdminNewProduct addNewProduct={addNewProduct} setHinta={setHinta} setImagefile={setImagefile} setKustannus={setKustannus} setMaku={setMaku} setTaytemaku={setTaytemaku} setTrnro={setTrnro} setTuotenimi={setTuotenimi} categories={categories} />
                    
                     
+                </div>
+
+                {/* tuotteiden muokkaaminen, poisto */}
+
+                <div className="row">
+                    <h5>Tuotteiden muokkaaminen</h5>
+                    <div>
+                        <table class="table" id="editproducts">
+                            <tr>
+                                <th scope="col">Tuotenro</th>
+                                <th scope="col">Tuotenimi</th>
+                                <th scope="col">Hinta</th>
+                                <th scope="col">Kustannus</th>
+                                <th scope="col">Tuoteryhmä</th>
+                                <th scope="col">Maku</th>
+                                <th scope="col">Täytemaku</th>
+                                <th scope="col">Kuva</th>
+                            </tr>
+                            {adminproducts.map(product => (
+              
+                            <tr key={product.tuotenro} >
+                                <td scope="col">{product.tuotenro}</td>
+                                <td scope="col">{product.tuotenimi}</td>
+                                <td scope="col">{product.hinta}</td>
+                                <td scope="col">{product.kustannus}</td>
+                                <td scope="col">{product.trnro}</td>
+                                <td scope="col">{product.maku}</td>
+                                <td scope="col">{product.taytemaku}</td>
+                                <td scope="col">{product.kuva}</td>
+                                
+                            </tr>
+                            ))}
+                        </table>
+                    </div>
                 </div>
 
                 {/* Tilausten hallinta */}

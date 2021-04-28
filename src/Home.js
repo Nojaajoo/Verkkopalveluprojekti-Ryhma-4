@@ -2,8 +2,8 @@ import React,{useEffect,useState} from 'react';
 import "./App.css";
 import logo from "./img/donitsilogo.png";
 
-export default function Home({url,category, addToCart}) {
-    const [products, setProducts] = useState([]);
+export default function Home({url,category, addToCart, products, setProducts}) {
+    // const [products, setProducts] = useState([]);
     let donitsiteksti = "Tässäpä olisi yllättävän maukas donitsi"
 
     useEffect(async() => {

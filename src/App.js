@@ -27,6 +27,7 @@ function App() {
   const [delivery, setDelivery] = useState(0); //ostoskoriin välitettävä toimitusmaksun tilamuuttuja, ettei valinta katoa kun käy muualla
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
+  const [products, setProducts] = useState([]);
 
   let location = useLocation();
 //muuttujat ostoskorin yhteenlasketulle hinnalle ja tavaroiden määrälle
@@ -99,6 +100,8 @@ function App() {
               url={URL}
               category={category}
               addToCart={addToCart}
+              products={products}
+              setProducts={setProducts}
               />
             </>
             } exact />
