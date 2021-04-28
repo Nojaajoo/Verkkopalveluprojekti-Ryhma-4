@@ -1,8 +1,12 @@
 import React from 'react';
 import "./Admin.css";
 import {useState,useEffect} from "react";
+import { Redirect } from 'react-router';
 
 export default function Admin({categories,url}) {
+
+    
+
     const [imagefile, setImagefile] = useState(null); // kuvatiedosto, josta erotellaan kuvan nimi
     
     const [tuotenimi, setTuotenimi] = useState("");
@@ -25,6 +29,14 @@ export default function Admin({categories,url}) {
             setKuva(imagefile.name);
         }
     }, [imagefile])
+
+    useEffect(() => {
+        if (sessionStorage.getItem('kayttaja') === null) {
+            return <Redirect to="/login" />
+        } 
+    }, [])
+
+
 
     //uuden tuotteen lähettäminen backendiin
     function addNewProduct(e) {
@@ -320,5 +332,5 @@ export default function Admin({categories,url}) {
 
             </div> 
         </div>
-    )
+    ) 
 }
