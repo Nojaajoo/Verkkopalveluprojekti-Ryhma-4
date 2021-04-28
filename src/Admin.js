@@ -3,8 +3,12 @@ import "./Admin.css";
 import {useState,useEffect} from "react";
 import AdminNewProduct from './AdminNewProduct';
 
+import { Redirect } from 'react-router';
 
 export default function Admin({categories,url}) {
+
+    
+
     const [imagefile, setImagefile] = useState(null); // kuvatiedosto, josta erotellaan kuvan nimi
     
     const [tuotenimi, setTuotenimi] = useState("");
@@ -46,6 +50,14 @@ export default function Admin({categories,url}) {
             setKuva(imagefile.name);
         }
     }, [imagefile])
+
+    useEffect(() => {
+        if (sessionStorage.getItem('kayttaja') === null) {
+            return <Redirect to="/login" />
+        } 
+    }, [])
+
+
 
     //uuden tuotteen lähettäminen backendiin
     function addNewProduct(e) {
@@ -237,7 +249,7 @@ export default function Admin({categories,url}) {
                                     </div>
                                     <div className="col-4">
                                         <span id="tuotenroHelpInline" className="form-text">
-                                        Syötä tilauksen tuotenumero.
+                                        Syötä tilauksen kappaleen tuotenumero.
                                         </span>
                                     </div>
                                 </div>
@@ -251,7 +263,7 @@ export default function Admin({categories,url}) {
                                     </div>
                                     <div className="col-4">
                                         <span id="kplHelpInline" className="form-text">
-                                        Syötä tilauksen kappalemäärä.
+                                        Syötä tilauksen tuotteiden kappalemäärä.
                                         </span>
                                     </div>
                                 </div>
@@ -267,5 +279,5 @@ export default function Admin({categories,url}) {
 
             </div> 
         </div>
-    )
+    ) 
 }
