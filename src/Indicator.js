@@ -4,13 +4,16 @@ import {Link} from 'react-router-dom';
 export default function Indicator({user}) {
 
 
-    
+    let check = sessionStorage.getItem('kayttaja');
+    check = JSON.parse(check);
     
 
-    if (sessionStorage.getItem('kayttaja') != null) {
+    if (check != null) {
         return (
             <div>
                 <p>Olet kirjautunut ylläpitäjänä!</p>
+                <Link to="/admin">Ylläpito</Link>
+                &nbsp;
                 <Link to="/Logout">Kirjaudu ulos</Link>
             </div>
     )
