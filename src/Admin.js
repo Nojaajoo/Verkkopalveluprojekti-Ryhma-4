@@ -51,11 +51,12 @@ export default function Admin({categories,url}) {
         }
     }, [imagefile])
 
-    useEffect(() => {
-        if (sessionStorage.getItem('kayttaja') === null) {
-            return <Redirect to="/login" />
-        } 
-    }, [])
+    let check = sessionStorage.getItem('kayttaja');
+    check = JSON.parse(check);
+
+    if(check === null) {
+        return <Redirect to="/login" />
+    }
 
 
 

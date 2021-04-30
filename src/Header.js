@@ -42,15 +42,6 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
                     <li className="nav-item navText">
                     <Link className="nav-link" to="/">Etusivu</Link>
                     </li>
-                    <li className="nav-item navText">
-                    <Link className="nav-link" to="/Info">Tietoa meistä</Link>
-                    </li>
-                    <li className="nav-item navText">
-                    <Link className="nav-link" to="/Login">Kirjaudu</Link>
-                    </li>
-                    <li className="nav-item navText">
-                    <Link className="nav-link" to="/Admin">Admin (poista kun valmis)</Link>
-                    </li>
                     <li className="nav-item dropdown navText">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Tuotteet
@@ -84,6 +75,9 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
                     <ul className="navbar-nav ml-auto cartIcon">
                     <li className="nav-item" >
                     <CartIcon cart={cart} amount={amount} />
+                    </li>
+                    <li className="nav-item navText">
+                    <Link className="nav-link" to="/Login">Kirjaudu</Link>
                     </li>
                 </ul>
                 </ul>
