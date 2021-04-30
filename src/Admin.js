@@ -23,6 +23,42 @@ export default function Admin({categories,url,orders,setOrders,customers,setCust
 
     const [adminproducts, setAdminproducts] = useState([]);
 
+        // fetch orders from database
+        useEffect(async() => {
+            try {
+                
+                const response = await fetch(url + 'products/getorders.php');
+                const json = await response.json();
+                
+                if (response.ok) {
+                    
+                    setOrders(json);
+                } else {
+                    alert(json.error);
+                }
+            } catch (error) {
+                alert(error);
+            }
+        }, [])
+    
+        // fetch customers from database
+        useEffect(async() => {
+            try {
+                
+                const response = await fetch(url + 'products/getcustomers.php');
+                const json = await response.json();
+                
+                if (response.ok) {
+                    
+                    setCustomers(json);
+                } else {
+                    alert(json.error);
+                }
+            } catch (error) {
+                alert(error);
+            }
+        }, [])
+
     // tuotteiden tietojen näyttäminen
     useEffect(async() => {
         // if (category !== null) {
@@ -146,41 +182,7 @@ export default function Admin({categories,url,orders,setOrders,customers,setCust
         )
     };
 
-    // fetch orders from database
-    useEffect(async() => {
-        try {
-            
-            const response = await fetch(url + 'products/getorders.php');
-            const json = await response.json();
-            
-            if (response.ok) {
-                
-                setOrders(json);
-            } else {
-                alert(json.error);
-            }
-        } catch (error) {
-            alert(error);
-        }
-    }, [])
 
-    // fetch customers from database
-    useEffect(async() => {
-        try {
-            
-            const response = await fetch(url + 'products/getcustomers.php');
-            const json = await response.json();
-            
-            if (response.ok) {
-                
-                setCustomers(json);
-            } else {
-                alert(json.error);
-            }
-        } catch (error) {
-            alert(error);
-        }
-    }, [])
 
     return (
         <div id="Adminpage">
