@@ -18,8 +18,8 @@ export default function Logout({setUser, url}) {
             console.log(address);
             try {
                 await fetch(address, config);
-                setUser(null); 
                 sessionStorage.setItem('kayttaja', null);
+                setUser(null); 
                 // history.push('/');
             } catch (error) {
                 alert(error);
