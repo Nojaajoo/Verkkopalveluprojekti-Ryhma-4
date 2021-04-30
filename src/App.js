@@ -27,6 +27,10 @@ function App() {
   const [delivery, setDelivery] = useState(0); //ostoskoriin välitettävä toimitusmaksun tilamuuttuja, ettei valinta katoa kun käy muualla
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
+  const [orders, setOrders] = useState([]);
+  const [customers, setCustomers] = useState([]);
+
+  const [products, setProducts] = useState([]);
 
   let location = useLocation();
 //muuttujat ostoskorin yhteenlasketulle hinnalle ja tavaroiden määrälle
@@ -99,6 +103,8 @@ function App() {
               url={URL}
               category={category}
               addToCart={addToCart}
+              products={products}
+              setProducts={setProducts}
               />
             </>
             } exact />
@@ -119,7 +125,7 @@ function App() {
             <Route path="/Login" render={() => <Login url={URL} setUser={setUser} user={user} />} />
             {/* <Route path="/Indicator" render={() => <Indicator user={user} /> } /> */}
             <Route path="/Logout" render={() => <Logout setUser={setUser} url={URL} /> } />
-            <Route path="/Admin" render={() => <Admin categories={categories} url={URL} />} />
+            <Route path="/Admin" render={() => <Admin categories={categories} url={URL} orders={orders} setOrders={setOrders} customers={customers} setCustomers={setCustomers} />} />
             <Route component={NotFound} />
             
           </Switch>
