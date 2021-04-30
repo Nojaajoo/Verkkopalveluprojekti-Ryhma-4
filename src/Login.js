@@ -1,10 +1,11 @@
 import React from 'react'
 import {useState} from 'react';
 import {useHistory} from 'react-router';
+import './login.css'
 
 export default function Login({url, setUser, user}) {
-    const [username, setUsername] = useState('donitsiadmin');
-    const [password, setPassword] = useState('donitsi123');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     
     let history = useHistory();
@@ -52,8 +53,8 @@ export default function Login({url, setUser, user}) {
                     <label for="salasana">Password</label>
                     <input id="salasana" className="form-control" placeholder="Salasana" type="password" value={password} onChange={e => setPassword(e.target.value)}/>
                 </div>
-                <div>
-                    <button className="btn btn-primary">Kirjaudu sisään!</button>
+                <div className="pt-2">
+                    <button className="btn loginButton">Kirjaudu sisään!</button>
                 </div>
             </form>
         </div>
