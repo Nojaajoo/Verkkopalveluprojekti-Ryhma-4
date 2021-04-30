@@ -30,6 +30,7 @@ function App() {
   const [orders, setOrders] = useState([]);
   const [customers, setCustomers] = useState([]);
 
+  const [products, setProducts] = useState([]);
 
   let location = useLocation();
 //muuttujat ostoskorin yhteenlasketulle hinnalle ja tavaroiden määrälle
@@ -102,6 +103,8 @@ function App() {
               url={URL}
               category={category}
               addToCart={addToCart}
+              products={products}
+              setProducts={setProducts}
               />
             </>
             } exact />
