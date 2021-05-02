@@ -5,10 +5,7 @@ import AdminNewProduct from './AdminNewProduct';
 
 import { Redirect } from 'react-router';
 
-export default function Admin({categories,url}) {
-
-    
-
+export default function Admin({categories,url,orders,setOrders,customers,setCustomers}) {
     const [imagefile, setImagefile] = useState(null); // kuvatiedosto, josta erotellaan kuvan nimi
     
     const [tuotenimi, setTuotenimi] = useState("");
@@ -25,6 +22,42 @@ export default function Admin({categories,url}) {
     const [kpl, setKpl] = useState(0);
 
     const [adminproducts, setAdminproducts] = useState([]);
+
+        // fetch orders from database
+        useEffect(async() => {
+            try {
+                
+                const response = await fetch(url + 'products/getorders.php');
+                const json = await response.json();
+                
+                if (response.ok) {
+                    
+                    setOrders(json);
+                } else {
+                    alert(json.error);
+                }
+            } catch (error) {
+                alert(error);
+            }
+        }, [])
+    
+        // fetch customers from database
+        useEffect(async() => {
+            try {
+                
+                const response = await fetch(url + 'products/getcustomers.php');
+                const json = await response.json();
+                
+                if (response.ok) {
+                    
+                    setCustomers(json);
+                } else {
+                    alert(json.error);
+                }
+            } catch (error) {
+                alert(error);
+            }
+        }, [])
 
     // tuotteiden tietojen näyttäminen
     useEffect(async() => {
@@ -165,6 +198,8 @@ export default function Admin({categories,url}) {
         )
     };
 
+
+
     return (
         <div id="Adminpage">
             <div id="admincontent">
@@ -234,25 +269,39 @@ export default function Admin({categories,url}) {
                                         <label htmlFor="tilausnro" className="col-form-label">Tilausnumero:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input onChange={e => setTilausnro(e.target.value)} required name="tilausnro" maxLength="30" type="text" id="tilausnro" className="form-control" aria-describedby="tilausnroHelpInline"></input>
+                                    <select onChange={e => setTilausnro(Number(e.target.value))} required name="tilausnro" id="tilausnro" className="form-select" aria-describedby="tilausnroHelpInline">
+                                        <option defaultValue value={null}>Valitse tilausnumero</option>
+                                        {orders.map(tilausrivi => {
+                                            return (
+                                                <option key={tilausrivi.tilausnro} value={tilausrivi.tilausnro}>{tilausrivi.tilausnro}</option>
+                                            );
+                                        })}
+                                    </select>
                                     </div>
                                     <div className="col-4">
                                         <span id="tilausnroHelpInline" className="form-text">
-                                        Syötä tilauksen tuotenumero.
+                                        Valitse muutettava tilausnumero. (Pakollinen.)
                                         </span>
                                     </div>
                                 </div>
 
                                 <div className="row g-3 align-items-center newProductFormInput">
                                     <div className="col-3">
-                                        <label htmlFor="rivinro" className="col-form-label">Rivinumero:</label>
+                                        <label htmlFor="rivinro" className="col-form-label">rivinumero:</label>
                                     </div>
                                     <div className="col-5">
-                                        <input onChange={e => setRivinro(e.target.value)} required name="rivinro" maxLength="30" type="text" id="rivinro" className="form-control" aria-describedby="rivinroHelpInline"></input>
+                                    <select onChange={e => setRivinro(Number(e.target.value))} required name="rivinro" id="rivinro" className="form-select" aria-describedby="rivinroHelpInline">
+                                        <option defaultValue value={null}>Valitse rivinumero</option>
+                                        {orders.map(tilausrivi => {
+                                            return (
+                                                <option key={tilausrivi.rivinro} value={tilausrivi.rivinro}>{tilausrivi.rivinro}:{tilausrivi.rivinro}</option>
+                                            );
+                                        })}
+                                    </select>
                                     </div>
                                     <div className="col-4">
                                         <span id="rivinroHelpInline" className="form-text">
-                                        Syötä tilauksen rivinumero.
+                                        Valitse muutettava tilausnumero. (Pakollinen.)
                                         </span>
                                     </div>
                                 </div>

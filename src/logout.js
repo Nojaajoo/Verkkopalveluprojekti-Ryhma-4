@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {useHistory} from 'react-router'
+import './login.css';
 
 export default function Logout({setUser, url}) {
 
@@ -31,9 +32,9 @@ export default function Logout({setUser, url}) {
 
 
     return (
-        <div>
-            <p>Olet kirjautunut ulos</p>
-            <Link to="/login">Kirjaudu uudelleen</Link>
+        <div className="container text-center pt-5 logoutPage">
+            <h3>Olet kirjautunut ulos</h3>
+            <Link to="/login" className="btn loginButton pt-2">Kirjaudu uudelleen</Link>
         </div>
     )
 }
