@@ -58,6 +58,22 @@ export default function Admin({categories,url}) {
         return <Redirect to="/login" />
     }
 
+    //kuvatiedoston tallentaminen backendiin
+    function sendImageFile() {
+    
+        const formData = new FormData();
+        formData.append("imagefile",imagefile);
+        fetch (url + "admin/saveProductImage.php",
+            {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data; "
+                }
+            }
+        )
+    };
+
 
 
     //uuden tuotteen lähettäminen backendiin
@@ -88,10 +104,18 @@ export default function Admin({categories,url}) {
             (res) => {
                 console.log(res);
             	if (status === 200) {
-                    if (imagefile != null) {
-                        sendImageFile(); // lähetetään onnistuneen tuotteen lisäyksen jälkeen kyseiselle tuotteelle kuuluva tuotekuva backendiin
-                        setImagefile(null);
-                    }
+                    // if (imagefile != null) {
+                        
+                    //     // formData.append("imagefile",imagefile);
+                    //     // fetch (url + "admin/saveProductImage.php",
+                    //     //     {
+                    //     //         method: "POST",
+                    //     //         body: formData
+                    //     //     }
+                    //     // )
+                    //     // sendImageFile(); // lähetetään onnistuneen tuotteen lisäyksen jälkeen kyseiselle tuotteelle kuuluva tuotekuva backendiin
+                    //     // setImagefile(null);
+                    // }
                     alert("lisäys onnistui!");
             	} else {
             	alert("testi")
@@ -102,18 +126,10 @@ export default function Admin({categories,url}) {
         )
     };
 
-    //kuvatiedoston tallentaminen backendiin
-    function sendImageFile() {
-        
-        const formData = new FormData();
-        formData.append("imagefile",imagefile);
-        fetch (url + "admin/saveProductImage.php",
-            {
-                method: "POST",
-                body: formData
-            }
-        )
-    };
+    function newProductAndImage(e) {
+        addNewProduct(e);
+        sendImageFile();
+    }
     
     function modifyOrder(e) {
         e.preventDefault();
@@ -164,7 +180,7 @@ export default function Admin({categories,url}) {
                         <h5>Uusien tuotteiden lisäys</h5>
                     </div>
                     
-                    <AdminNewProduct addNewProduct={addNewProduct} setHinta={setHinta} setImagefile={setImagefile} setKustannus={setKustannus} setMaku={setMaku} setTaytemaku={setTaytemaku} setTrnro={setTrnro} setTuotenimi={setTuotenimi} categories={categories} />
+                    <AdminNewProduct newProductAndImage={newProductAndImage} addNewProduct={addNewProduct} setHinta={setHinta} setImagefile={setImagefile} setKustannus={setKustannus} setMaku={setMaku} setTaytemaku={setTaytemaku} setTrnro={setTrnro} setTuotenimi={setTuotenimi} categories={categories} />
                    
                     
                 </div>
@@ -282,3 +298,25 @@ export default function Admin({categories,url}) {
         </div>
     ) 
 }
+
+// const filetToUpload = imagefile;
+//                         const data = new FormData();
+//                         data.append("name", "Image Upload");
+//                         data.append("file_attachment", filetToUpload);
+
+//                         let response = await fetch(
+//                             url + "admin/saveProductImage.php",
+//                             {
+//                                 method: "POST",
+//                                 body: data,
+//                                 headers: {
+//                                     "Content-Type": "multipart/form-data; ",
+//                                 },
+//                             }
+//                         );
+//                         let responseJson = await response.json();
+//                         if (responseJson.status == 1) {
+//                             alert("Upload successful: image");
+//                         } else {
+//                             alert("please select file first");
+//                         }

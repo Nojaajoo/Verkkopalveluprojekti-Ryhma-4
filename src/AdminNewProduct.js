@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function AdminNewProduct({addNewProduct, setHinta, setImagefile, setKustannus, setMaku, setTaytemaku, setTrnro, setTuotenimi, categories}) {
+export default function AdminNewProduct({newProductAndImage, addNewProduct, setHinta, setImagefile, setKustannus, setMaku, setTaytemaku, setTrnro, setTuotenimi, categories}) {
     return (
         <div>
             <div className="col-12">
-                <form className="row justify-content-evenly" id="newproduct" onSubmit={addNewProduct}>
+                <form className="row justify-content-evenly" id="newproduct" onSubmit={newProductAndImage}>
                     <div className="col-12" className="newProductFormInputs">
                         <div className="row g-3 align-items-center newProductFormInput">
                             <div className="col-3">
