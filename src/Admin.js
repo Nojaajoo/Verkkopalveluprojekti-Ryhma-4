@@ -216,16 +216,16 @@ export default function Admin({categories,url,orders,setOrders,customers,setCust
                     </div>
                     
                     <AdminNewProduct newProductAndImage={newProductAndImage} addNewProduct={addNewProduct} setHinta={setHinta} setImagefile={setImagefile} setKustannus={setKustannus} setMaku={setMaku} setTaytemaku={setTaytemaku} setTrnro={setTrnro} setTuotenimi={setTuotenimi} categories={categories} />
-                   
                     
                 </div>
 
                 {/* tuotteiden muokkaaminen, poisto */}
 
-                <div className="row">
+                {/* <div className="row">
                     <h5>Tuotteiden muokkaaminen</h5>
                     <div>
                         <table class="table" id="editproducts">
+                            <tbody>
                             <tr>
                                 <th scope="col">Tuotenro</th>
                                 <th scope="col">Tuotenimi</th>
@@ -250,9 +250,10 @@ export default function Admin({categories,url,orders,setOrders,customers,setCust
                                 
                             </tr>
                             ))}
+                            </tbody>
                         </table>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Tilausten hallinta */}
 

@@ -13,13 +13,13 @@ export default function Indicator({user}) {
         return (
             <div>
                 <p>Olet kirjautunut ylläpitäjänä!</p>
-                <Link to="/admin">Ylläpito</Link>
+                <Link to="/admin"><span className="indA">Ylläpito</span></Link>
                 &nbsp;
-                <Link to="/Logout">Kirjaudu ulos</Link>
+                <Link to="/Logout"><span className="indA">Kirjaudu ulos</span></Link>
             </div>
     )
     } else {
-        return <p></p>
+        return <></>
     }
     
 }

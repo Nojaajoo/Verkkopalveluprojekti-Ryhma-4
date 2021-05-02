@@ -93,11 +93,14 @@ function App() {
     <Header url={URL} cart={cart} amount={amount} setCategory={setCategory} categories={categories} setCategories={setCategories} user={user} />
     <div className="App">
       
-        {/* < Indicator user={user}/> */}
+        
         <div id="content" className="container-fluid">
+          <div className="text-center indicator">< Indicator user={user} /></div>
+        
           <Switch>
             <Route path="/" render={() => 
             <>
+            
               <Carousel />
               <Home
               url={URL}

@@ -74,7 +74,7 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
                     </form>
                     <ul className="navbar-nav ml-auto cartIcon">
                     <li className="nav-item" >
-                    <CartIcon cart={cart} amount={amount} />
+                    <Link to="/Cart"><CartIcon cart={cart} amount={amount} /></Link>
                     </li>
                     <li className="nav-item navText">
                     <Link className="nav-link" to="/Login">Kirjaudu</Link>
@@ -85,9 +85,9 @@ export default function Header({url,cart,setCategory, amount, categories, setCat
                 </div>
             </div>
         </nav>
-            <div className="container text-center indicator">
+            {/* <div className="container text-center indicator">
                 <Indicator user={user} />
-            </div>
+            </div> */}
         </>    
     )
 }

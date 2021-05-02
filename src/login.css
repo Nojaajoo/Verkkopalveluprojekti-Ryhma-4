@@ -5,3 +5,15 @@
 .logoutPage {
     border-radius: 10px;
 }
+
+.indA {
+    padding: 1em;
+    background-color: #FE9A76;
+    text-decoration: underline;
+    border-radius: 20px;
+}
+
+.indA:hover {
+    background-color: #EE1AAB;
+    transition: all 100ms cubic-bezier(0.420, 0.000, 0.580, 1.000);
+}
