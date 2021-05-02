@@ -102,7 +102,7 @@ export default function Cart({url,cart,removeFromCart, updateAmount, emptyCart, 
                                 <div className="col cartCol">HINTA YHTEENSÄ</div>
                                 <div className="col cartCol text-right">&euro; {summa.toFixed(2)}</div>
                             </div> 
-                            <button className="btn btnCart">LÄHETÄ TILAUS</button>
+                            
                         </div>
                     </div>
                 </div>
