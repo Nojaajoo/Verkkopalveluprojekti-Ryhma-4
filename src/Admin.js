@@ -302,7 +302,7 @@ export default function Admin({categories,url,orders,setOrders,customers,setCust
                                     </div>
                                     <div className="col-4">
                                         <span id="rivinroHelpInline" className="form-text">
-                                        Valitse muutettava tilausnumero. (Pakollinen.)
+                                        Valitse muutettava rivinumero. (Pakollinen.)
                                         </span>
                                     </div>
                                 </div>
